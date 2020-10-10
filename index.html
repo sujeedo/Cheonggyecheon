@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1">
+        <title>청계천 홈</title>
+        <style>
+            *{margin: 0 auto; 
+            box-sizing: border-box;
+            border: 1px solid whit}
+            html,body{height: 100%}
+            @font-face{
+                font-family: nanumpen;
+                src: url(font/NanumPenScript.ttf)}      
+            @font-face{
+                font-family: godo;
+                src: url(font/GodoM.ttf)}
+            @font-face{
+                font-family: nanumsquare;
+                src: url(font/NanumSquare_acL.ttf)}
+            @font-face{
+                font-family: sandolt;
+                src: url(font/SD_TT_L.otf)}
+            @font-face{
+                font-family: Musium;
+                src: url(font/Musium_L.ttf)}
+            @font-face{
+                font-family: myeonjo;
+                src: url(font/MapoAgape.ttf)}
+            #background{
+                width: 100%;
+                animation: back 20s infinite alternate linear;}
+            @keyframes back{
+                0%{background: url(image/chung_1.jpg) no-repeat; background-size: cover;}
+                10%{background: url(image/chung_1.jpg) no-repeat; background-size: cover;}
+                20%{background: url(image/chung_1.jpg) no-repeat; background-size: cover;}
+                30%{background: url(image/chung_1.jpg) no-repeat; background-size: cover;}
+                40%{background: url(image/chung_1.jpg) no-repeat; background-size: cover;}
+                50%{background: url(image/chung_2.jpg) no-repeat; background-size: cover;}
+                60%{background: url(image/chung_2.jpg) no-repeat; background-size: cover;}
+                70%{background: url(image/chung_4.jpg) no-repeat; background-size: cover;}
+                80%{background: url(image/chung_4.jpg) no-repeat; background-size: cover;}
+                90%{background: url(image/chung_4.jpg) no-repeat; background-size: cover;}
+                100%{background: url(image/chung_4.jpg) no-repeat; background-size: cover;}}
+           /*아웃박스*/            
+            #container{width: 100%; height: auto;}
+            .out{display: inline-block;}
+            
+            ::-webkit-scrollbar {width: 10px;} /*스크롤 바*/
+            ::-webkit-scrollbar-track {background-color: gainsboro; border-radius: 10px} /*스크롤 바 밑의 배경*/
+            ::-webkit-scrollbar-thumb {background: slateblue; border-radius: 10px} /*실질적 스크롤 바*/
+            ::-webkit-scrollbar-thumb:hover {background: mediumturquoise;} /*실질적 스크롤 바 위에 마우스를 올려다 둘 때*/
+            ::-webkit-scrollbar-thumb:active {background: slateblue;} /*실질적 스크롤 바를 클릭할 때*/
+
+        /*헤더부분_레이아웃*/
+            header{width: 100%; height: 100px; text-align: center; 
+                   background-color: rgba(0, 0, 0, 0); border-bottom:rgba(200, 200, 200, 0.3) 1px solid; 
+                   font-family: godo; color: white; 
+                   position: relative; z-index: 3;}
+            .out{display: flex; width: 1200px; height: 100px;
+                 position: relative;}
+            .out>a img{width: 100px; height: 50px; margin-top: 25px;}
+            .out nav{display: flex; padding: 40px; width: 70%;}
+            .in {display: flex; width: 133px;}
+            .in p{margin-top: 37px;}
+            .in img{height: 25px; margin-top: 35px;}
+            header a{text-decoration: none; font-size: large;}
+            nav a{position: relative;}/*글자 하단 라인 시작*/
+            nav a::after{position: absolute; content: ""; width: 0px; height: 2px; 
+                         background-color: white; top: 30px; left: 49.8%; transition: 0.5s;}
+            nav a::before{position: absolute; content: ""; width: 0px; height: 2px; 
+                          background-color: white; top: 30px; right: 49.8%; transition: 0.5s;}
+            nav a:hover::after{width: 50%;}
+            nav a:hover::before{width: 50%;}/*글자 하단 라인 끝*/
+            nav a:link,a:visited{color: white;}
+            nav a:hover{color: khaki;}
+            nav a:active{background-color: royalblue;}
+            header img:nth-of-type(1):hover{border-style: groove;}
+            header p:hover{cursor:context-menu;}
+            
+            /*섹션부분 레이아웃*/
+            section{width: 100%; height: 90%;
+                text-align: center;
+                margin: 0 auto;
+            }
+            #logo{width: 430px; margin: 0 auto;color: white;
+                line-height: 1.7;
+                text-shadow: 0px 0px 10px white;}
+            #logo img{margin-top: 80px;
+                margin-bottom: 20px;}
+            #logo p:nth-of-type(1){
+                font-family: nanumsquare;
+                font-weight: bold;
+                font-size: 18px;
+            }
+            #logo p:nth-of-type(2){font-family: nanumpen;
+                font-size: 4em;}
+            #logo p:nth-of-type(3){font-family: nanumpen;
+                font-size: 1.5em;
+            }
+            #logo p:nth-of-type(4){font-family: nanumpen;
+                font-size: 1.2em;
+                line-height: 1;
+                animation: semo 0.4s infinite alternate linear;
+            }
+            @keyframes semo{
+                0%{transform: translateY(-20px);}
+                100%{transform: translateY(0px);}
+            }
+            
+            #map{ width: 1070px; display: flex; margin-top: -60px; padding-bottom: 80px;}
+            #map div{ height: 298px; position: relative; top: -40px;}
+            #map div img{cursor: pointer;}
+            #map div img:nth-child(2){opacity: 0.2; position: absolute; left: 0px;}
+            #map div:hover img:nth-of-type(2){opacity: 0.7;}
+            
+            footer{background-color: rgba(0, 0, 0, 0.4);
+                   width: 100%; height: 180px; text-align: center; bottom: 0px;}
+            footer div{width: 40%; position: relative; top: 20px;}
+            footer p{color: white; font-family: nanumsquare; font-size: small; line-height: 1.5; padding-top: 25px; padding-bottom: 20px; padding-left: 40px; margin-left: 0;
+                     position: absolute; left: 184px;}
+            footer img{margin-left: 0; position: absolute; left: 84px; top: 50px;}
+            footer p:nth-of-type(2){position: absolute; border-bottom: 1px solid rgba(200, 200, 200, 0.4); width: 444px; height: 90px; left: 224px;}
+            footer p:nth-of-type(3){position: absolute; border-left: 1px solid rgba(200, 200, 200, 0.4); width: 20px; height: 100px; top: 25px; left: 202px;}            
+    </style>
+  </head> 
+  <body>
+    <div id="background">
+        <div id="container">
+          <!--헤더--> 
+          <header>
+                <div class="out">
+                    <a href="index.html">
+                    <img src="image/main_title.png" alt="main_title">
+                    </a>
+                    <nav>
+                        <div><a href="subIntroduction.html">청계천소개</a></div>
+                        <div><a href="subhistory.html">청계천역사</a></div>
+                        <div><a href="gallery.html">갤러리</a></div>
+                    </nav>
+                    <div class="in">
+                        <a href="team.html"><img src="image/icon_login.png" width="25px"></a>
+                    </div>
+                </div>
+         </header>
+         <!--섹션--> 
+            
+         <section>
+              <article id="logo">  
+                <img src="image/main_title.png" width="430px" alt="main_title">
+                <p>서울의 중심에서 만나는 자연<br>
+                   600년 역사와 문화가 살아 숨쉬는 공간<br>
+                   가족, 연인, 친구들과의 추억이 쌓이는 쉼터<br></p>
+                <p>함께 걸어볼까요?</p>
+                <p>아래 산책로를 골라보세요!</p><br>
+                <p>click!<br>▼</p>
+              </article>
+              <article id="map">
+                  <div class="map1" style=" cursor: pointer;" onclick="location.href='subpage1.html';">
+                    <img src="image/main_load_1_1.png" alt="map">
+                    <img src="image/main_load_1.png" alt="map">
+                  </div>
+                  <div class="map2" style=" cursor: pointer;" onclick="location.href='subpage2.html';">
+                    <img src="image/main_load_2_2.png" alt="map">
+                    <img src="image/main_load_2.png" alt="map">
+                  </div>
+                  <div class="map3"style=" cursor: pointer;" onclick="location.href='subpage3.html';">
+                    <img src="image/main_load_3_3.png" alt="map">
+                    <img src="image/main_load_3.png" alt="map">
+                  </div>
+             </article>
+         </section>
+         <!--푸터--> 
+         <footer>
+             <div>
+               <img src="image/main_title.png" alt="main_title" width="100px" height="50px">
+               <p>프로젝트 : 서울 명소 소개 사이트 제작하기<br>
+                  프로젝트 팀명 : 비콘찍고가 제작 팀 ｜ 프로젝트 팀원 : 송민석 / 장지영 / 최도권 / 김경미<br>
+                  프로젝트 제작 기간 : 2020.04.01 ~ 2020.05.07<br><br>
+                  Copyright © 2020. 비콘찍고가. All rights reserve.</p>
+               <p></p>
+               <p></p>  
+             </div>
+         </footer>
+        </div>
+    </div>
+  </body>
+</html>
