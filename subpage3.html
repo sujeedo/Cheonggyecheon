@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1">
+        <title>청계휴식길</title>
+        <style>
+            *{margin: 0 auto; 
+            box-sizing: border-box;
+            border: 1px solid whit}
+            html,body{height: 100%}
+            @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Dokdo&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+            @font-face{
+                font-family: nanumpen;
+                src: url(font/NanumPenScript.ttf)}      
+            @font-face{
+                font-family: godo;
+                src: url(font/GodoM.ttf)}
+            @font-face{
+                font-family: nanumsquare;
+                src: url(font/NanumSquare_acL.ttf)}
+            @font-face{
+                font-family: sandolt;
+                src: url(font/SD_TT_L.otf)}
+            @font-face{
+                font-family: Musium;
+                src: url(font/Musium_L.ttf)}
+            @font-face{
+                font-family: myeonjo;
+                src: url(font/MapoAgape.ttf)}
+            @font-face{font-family: SDK;
+                 src: url(font/SD_TT_L.otf)}
+            
+            
+            ::-webkit-scrollbar {width: 10px;} /*스크롤 바*/
+            ::-webkit-scrollbar-track {background-color: gainsboro; border-radius: 10px} /*스크롤 바 밑의 배경*/
+            ::-webkit-scrollbar-thumb {background: rgba(255, 153, 000,0.5); border-radius: 10px} /*실질적 스크롤 바*/
+            ::-webkit-scrollbar-thumb:hover {background: mediumturquoise;} /*실질적 스크롤 바 위에 마우스를 올려다 둘 때*/
+            ::-webkit-scrollbar-thumb:active {background: rgba(255, 153, 000,0.5)} /*실질적 스크롤 바를 클릭할 때*/
+            
+            
+            #background{
+                position: fixed;top: 0px; left: 0px;
+                width: 100%; height: 100%; z-index: -10;
+                background: url(./image/3_bg02.jpg) no-repeat;
+                  background-size: 2000px 1000px; background-position: center;}
+           /*아웃박스*/            
+            #container{width: 100%; height: auto; }
+
+        /*헤더부분_레이아웃*/
+            header{width: 100%; height: 100px;text-align: center;background-color: rgba(0, 0, 0, 0.8); border-bottom:rgba(200, 200, 200, 0.5) 1px solid; font-family: godo; color: white; position: relative; z-index: 3;}
+            .out{display: flex; width: 1200px; height: 100px;
+                position: relative;}
+            .out>a img{width: 100px; height: 50px; margin-top: 25px;}
+            .out nav{display: flex; padding: 40px; width: 70%;}
+            .in {display: flex; width: 133px;}
+            .in p{margin-top: 37px;}
+            .in img{height: 25px; margin-top: 35px;}
+            header a{text-decoration: none;font-size: large;}
+            nav a{ position: relative;}
+            nav a::after{
+                position: absolute; content: ""; width: 0px; height: 2px; background-color: white; top: 30px; left: 49.8%; transition: 1s; 
+            }
+            nav a::before{
+                position: absolute; content: ""; width: 0px; height: 2px; background-color: white; top: 30px; right: 49.8%; transition: 1s;
+            }
+            nav a:hover::after{width: 50%;}
+            nav a:hover::before{width: 50%;}
+            nav a:link,a:visited{color: white;}
+            nav a:hover{color: khaki;}
+            nav a:active{background-color: royalblue;}
+            header img:nth-of-type(1):hover{border-style: groove;}
+            header p:hover{background-color: slateblue}
+            /*헤더끝*/
+            /*상단스티키 바시작*/
+             #sectmove{ position: sticky; top: 0; display: flex; width: 100%; height: 50px; overflow: hidden; z-index: 3; min-width: 1200px;}
+            #sectmove div a{display: block; padding: 15px; height: 50px; width:100%; text-decoration: none; color: white; background-color: rgba(0, 0, 0, 0.8); border-right: 1px solid rgba(200, 200, 200, 0.5); border-bottom: 1px solid rgba(200, 200, 200, 0.5); text-align: center; font-family:SDK; font-size: 18px;}
+            #sectmove .menu {width: 400px;}
+            #sectmove div .road{width: 400px;}
+            #sectmove .menu:nth-child(4) a{background: rgba(255, 153, 0,0.5);}
+            #sectmove div{width:20% ;animation: subbar 1s normal;}
+            #sectmove div .road:hover{background-color:rgba(255, 153, 0,0.5); color: khaki;}
+            /*스티키바 끝*/
+            
+            /*섹션부분 시작*/
+            section{width: 100%; height: 100%;
+                text-align: center;
+                margin: 0 auto;
+            }
+            /*메인 글자*/
+            #subtitle{width: 1200px;}
+            #subtitle p{color: white; text-shadow: 3px 3px 3px black;}
+            #subtitle p:first-child{padding-top: 50px; font-size: 7em; font-family: 'Dokdo', cursive; text-align: center;animation-name: ang; animation-duration: 1.5s;}
+            #subtitle p:nth-child(2){margin-top: 30px; font-size: 2em; font-family: nanumpen;animation-name: ang1; animation-duration: 2s;}
+            #subtitle P:nth-child(3){margin-top: 10px; line-height: 1.5; 
+                font-weight: 600; font-family: nanumsquare; animation-name: ang2; animation-duration: 3s;}
+            #subtitle p:nth-child(4){margin-top: 10px; font-size: 25px; font-family: nanumpen; animation: semo 0.4s infinite alternate linear; z-index: 1;}
+            
+            /* 세부위치 이동 메뉴*/
+            #submenu{width: 1200px; display: flex; flex-direction: column;  margin-top: 10px; padding-bottom: 100px;}
+            #submenu>div{ width: 80%; height: 150px; border: 1px solid white; margin-bottom: 10px;  background-color: rgba(0, 0, 0, 0.4); }
+            #submenu div a{text-shadow: 3px 3px 5px black; text-align: center; display: block; width: 100%; height: 150px; text-decoration: none; color: white; font-family: SDK; font-size: x-large;padding-top: 40px;}
+            #submenu div:hover{background-color: rgba(255, 153, 000,0.5); transform: scale(1.1); transition: 0.8s;}
+            
+            /*사이드 네비게이션*/
+            #sidenav {position: fixed; right: 0px; top: 310px;}
+            #sidenav div{background-color: rgba(0, 0, 0, 0.4); width: 50px; height: 50px; border: 1px solid rgba(200, 200, 200, 0.2); }
+            #sidenav>div:hover{background-color: rgba(255, 153, 000,0.5);}
+            #sidenav>div a{display: block; width: 50px; height: 50px; padding: 10px; text-decoration: none;color: white;}
+            #sidenav div:last-child{height: 50px; padding-top: 3px; font-family: SDK;}
+            
+            /*세부 내용*/
+            article{color: white; width: 1200px; background-color: rgba(0, 0, 0, 0.4);margin-bottom: 50px; padding-bottom: 600px;}
+            #iconex{text-align: right; font-size: 0.64em; padding-top:  50px; padding-right: 20px;}
+            #iconex img{width: 22px; margin-right: 0px}
+            #iconex div{display: inline-block; text-align: center; width: 45px;}
+            article h2{padding: 20px; padding-top: 0px;font-family: Musium; font-size: 3em;}
+            article h3{width: 100%; font-size: 1em; padding: 50px;font-family: nanumsquare;line-height: 1.5;}
+            #veiw div h4{width: 100%; font-family: Musium; color: black; font-size: 2em; text-align: left; padding-bottom: 25px;}
+            #veiw div h4 img{width: 32px; margin-left: 10px;}
+            #veiw{width: 95%; background-color: antiquewhite; display: flex; padding: 20px;}
+            #veiw img{width: 45%;}
+            #veiw div{display: block; padding: 20px;}
+            #veiw div p{color: black; text-align: left;}
+            
+            /* 세부내용 안의 메뉴*/
+            .tabmenuside2 h4{width: 100%; font-family: Musium; color: black; font-size: 2em; text-align: left; padding-bottom: 25px;}
+            .tabmenuside2 h4 img{width: 32px; margin-left: 10px;}
+            .tabmenu label>div {width: 100%; background-color: white; display: flex; padding: 20px;}
+            .tabmenuside1{width: 50%;display: flex; position: relative; top: 370px; text-align: center;}
+            .tabmenuside1>img{width: 100%; height: 365px; position: relative; top: -370px; z-index: 1; }
+            .tabmenuside1 label>div{position: absolute; display: none; top: -370px; left: 0; padding:0; }
+            .tabmenuside1 label>div img{width: 100%; height: 365px; }
+            .tabmenuside1 label>img{position: relative;z-index: 2;cursor: pointer; width: 180px; height: 120px;}
+            .tabmenuside1 label>input:checked~div{display: block; }
+            .tabmenuside1>label>input:checked+img{border-bottom: 5px solid rgb(255, 153, 0) ;  box-sizing:content-box;}
+            
+            
+            .tabmenuside2{ width: 50%; display: block; padding: 20px;}
+            .tabmenuside2>p{ padding-left: 30px; color: black; text-align: left; font-family: nanumsquare; line-height: 1.5; font-weight: bold; }
+            .tabmenuside2>div{display: flex; margin-top: 50px;}
+            .tabmenuside2>div div{width: 50%;}
+            .tabmenuside2>div p{padding-left: 30px; color: black; text-align: left; font-family: nanumsquare; line-height: 1.5; font-weight: bold;padding-bottom: 10px}
+            .tabmenuside2>div div:nth-child(2){background-color: azure; box-shadow: 2px 2px 2px gray;}
+            .tabmenuside2>div div:nth-child(2) p{text-align: center; padding: 5px;}
+            .tabmenuside2 table{color: black; border: 2px dotted blue; width: 90%; margin-top: 50px;font-family: nanumsquare; line-height: 1.5; font-weight: bold; padding: 10px;}
+            .tabmenu {
+                width :95%;
+				margin : 0 auto;
+				position : relative;
+                text-align: left;
+                display: flex;
+			}
+            .tabmenu>label>div {
+				position : absolute;
+                left: 0px;
+				display : none;
+                height: 550px;
+            }
+            .tabmenu>label:last-child a{border-right: 1px solid white;}
+            .tabmenu>label>input:checked~div{
+				display:flex;
+            }
+        
+            .tabmenu>label>input:checked+a{
+                background-color:rgba(255, 153, 000,0.5); 
+            }
+            .tabmenu a{display: block; border: 1px solid white; height: 40px; /*width: 162.9px;*/ text-align: center; padding-top: 8px; text-decoration: none; color: white; border-right: none;cursor: pointer;}
+            .view{width: 190px;}
+            .food{width:228px;}
+            .travel{width: 380px;}
+            #lasta{border-right: 1px solid white;}
+            .tabmenu a:hover{cursor: pointer; background-color:rgba(255, 153, 000,0.5); }
+            .tabmenu a>img{width: 20px; margin-bottom: -5px;}
+             input{display: none;}
+            .temp{width: 48.25%; position: absolute;}
+            .temp img{width: 100%; }
+            
+            /*푸터 시작*/
+            footer{background-color: rgba(0, 0, 0, 0.4);
+                   width: 1200px; height: 180px; text-align: center; bottom: 0px;}
+            footer div{width: 63.5%; position: relative; top: 20px;}
+            footer p{color: white; font-family: nanumsquare; font-size: small; line-height: 1.5; padding-top: 25px; padding-bottom: 20px; padding-left: 40px; margin-left: 0;
+                     position: absolute; left: 184px;}
+            footer img{margin-left: 0; position: absolute; left: 84px; top: 50px;}
+            footer p:nth-of-type(2){position: absolute; border-bottom: 1px solid rgba(200, 200, 200, 0.4); width: 444px; height: 90px; left: 224px;}
+            footer p:nth-of-type(3){position: absolute; border-left: 1px solid rgba(200, 200, 200, 0.4); width: 20px; height: 100px; top: 25px; left: 202px;}
+            
+            @keyframes subbar{
+                0%{margin-top: -50px;}
+                25%{margin-top: -50px;}
+                100%{margin-top: 0px;}
+            }
+            @keyframes semo{
+                0%{transform: translateY(0px);}
+                100%{transform: translateY(10px);}
+            }
+            @keyframes ang{
+                0%{margin-left: -20px; opacity: 0;}
+                33%{margin-left: -20px; opacity: 0;}
+                100%{margin-left: 0px; opacity: 1;}
+
+            }
+            @keyframes ang1{
+                0%{margin-left: -20px; opacity: 0;}
+                55%{margin-left: -20px; opacity: 0;}
+                100%{margin-left: 0px; opacity: 1;}
+            }
+            @keyframes ang2{
+                0%{margin-left: -20px; opacity: 0;}
+                66%{margin-left: -20px; opacity: 0;}
+                100%{margin-left: 0px; opacity: 1;}
+            }
+            
+            .bling{
+            position: relative;
+            overflow: hidden;
+        }
+        .bling::before{
+            content: ""; position: absolute;
+            width: 1000px; height: 10px; background-color: rgba(255, 255, 255, 0.1); 
+            top: -580px; left: -250px;
+            transform: rotate(-45deg);
+        }
+        
+        .bling::after{
+            content: ""; position: absolute;
+            width: 1000px; height: 180px; background-color: rgba(255, 255, 255, 0.1); 
+            top: -300px; left: -420px;
+            transform: rotate(-45deg);
+        }
+        .bling:hover.bling::before{
+            top: 700px; left: -150px;
+            background-color: rgba(255, 255, 255, 0.6);
+            transition: 1.1s;
+            height: 20px;
+        }
+        .bling:hover.bling::after{
+            top: 800px; left: -200px;
+            background-color: rgba(255, 255, 255, 0.6);
+            transition: 1.1s;
+            height: 100px;
+        }
+        
+        #submenu div:nth-child(1){
+            background-image: url('./image/3_1_01.png');
+            background-position: center;
+            background-size: cover;
+            
+        }
+        #submenu div:nth-child(2){
+            background-image: url('./image/3_2_03.png');
+            background-position: center;
+            background-size: cover;
+        }
+        #submenu div:nth-child(3){
+            background-image: url('./image/3_gallay09.jpg');
+            background-position: center;
+            background-size: cover;
+        }
+        #submenu div:nth-child(4){
+            background-image: url('./image/3_0_01.jpg');
+            background-position: center;
+            background-size: cover;
+        }
+        #submenu div:nth-child(5){
+            background-image: url('./image/3_gallay01.jpg');
+            background-position: center;
+            background-size: cover;
+        }
+        #p2ss{
+            
+            position: relative;
+            background-image: url(./image/3_bg03.png);
+            width: 80%; height: 700px;
+            
+        }
+        #p2ss div{
+           position: absolute;
+           display: none;
+           cursor: pointer;
+        }
+        #p2ss img{
+           cursor: pointer;
+        }
+        #p2ss div:hover div{
+            display: block;
+            
+        }
+        #p2ss div div{
+            
+            background-color: rgba(200, 200, 200, 0.2);
+        }
+        #p2ss input:checked~div{
+            display: block;
+        }
+        #p2ss input:hover{
+            cursor: pointer;
+        }
+        .ps1{
+            top:150px; left: 350px;
+        }
+        .ps1::after{
+            content: "명월 커피숍   성동구 도선 2동 29-195 2층"; position: absolute; 
+            width: 150px;  top: -50%; left: 25px;
+            background-color: rgba(25, 25, 25, 0.8);
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        .ps1:hover.ps1::after{
+            display: block;
+        }
+        .ps2{
+            top: 250px; left: 205px;
+        }
+        .ps2::after{
+            content: "이디야커피 성동구 마장동 15-195"; position: absolute; 
+            width: 150px;  top: -50%; left: 25px;
+            background-color: rgba(25, 25, 25, 0.8);
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        .ps2:hover.ps2::after{
+            display: block;
+        }
+        .ps3{
+            top: 500px; left: 700px;
+        }
+        .ps3::after{
+            content: "엔제리너스 사근점 성동구 사근동 12-65 1층"; position: absolute; 
+            width: 150px;  top: -50%; left: 25px;
+            background-color: rgba(25, 25, 25, 0.8);
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        .ps3:hover.ps3::after{
+            display: block;
+        }
+        .ps4{
+            top: 600px; left: 100px;
+        }
+        .ps4::after{
+            content: "세븐일레븐 성동점 성동구 도선동 32-165"; position: absolute; 
+            width: 150px;  top: -50%; left: 25px;
+            background-color: rgba(25, 25, 25, 0.8);
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        .ps4:hover.ps4::after{
+            display: block;
+        }
+        .ps5{
+            top: 300px; left: 600px;
+        }
+        .ps5::after{
+            content: "GS25 성동점 성동구 마장동 125-15"; position: absolute; 
+            width: 150px;  top: -50%; left: 25px;
+            background-color: rgba(25, 25, 25, 0.8);
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        .ps5:hover.ps5::after{
+            display: block;
+        }
+        .ps6{
+            top: 220px; left: 550px;
+        }
+        .ps6::after{
+            content: "CU 마장점 성동구 마장동 120-13"; position: absolute; 
+            width: 150px;  top: -50%; left: 25px;
+            background-color: rgba(25, 25, 25, 0.8);
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        .ps6:hover.ps6::after{
+            display: block;
+        }
+        .ps7{
+            top: 400px; left: 500px;
+        }
+        .ps7::after{
+            content: "성동 복지센터 성동구 사근동 167-65 2층"; position: absolute; 
+            width: 150px;  top: -50%; left: 25px;
+            background-color: rgba(25, 25, 25, 0.8);
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        .ps7:hover.ps7::after{
+            display: block;
+        }
+        .ps8{
+            top: 500px; left: 600px;
+        }
+        .ps8::after{
+            content: "사근동 동사무소 성동구 사근동 37-65 1층"; position: absolute; 
+            width: 150px;  top: -50%; left: 25px;
+            background-color: rgba(25, 25, 25, 0.8);
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        .ps8:hover.ps8::after{
+            display: block;
+        }
+        .ps9{
+            top: 100px; left: 800px;
+        }
+        .ps9::after{
+            content: "용답동 동사무소 성동구 용답동 467-65 2층"; position: absolute; 
+            width: 150px;  top: -50%; left: 25px;
+            background-color: rgba(25, 25, 25, 0.8);
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        .ps9:hover.ps9::after{
+            display: block;
+        }
+        .box1{
+            box-sizing: content-box;
+            position: relative;
+        }
+        .box2{
+            position: relative;
+            box-sizing: content-box;
+        }
+        .box1:hover.box1::before{
+            animation-name: bling;
+        }
+        .box1:hover.box1::after{
+            animation-name: bling3;
+            
+        }
+        
+        .box2:hover.box2::before{
+            animation-name: bling2;
+        }
+        .box2:hover.box2::after{
+            animation-name: bling4;
+            
+        }
+        .box1::before{
+            content: ""; position: absolute;
+            width: 2px; height: 2px;
+            box-shadow: 0px 0px 2px white;
+            top:0; left: 0;
+            background-color: white;
+            
+            animation-timing-function: linear;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            
+            
+        }
+        .box1::after{
+            content: ""; position: absolute;
+            width: 2px; height: 2px;
+            box-shadow: 0px 0px 2px white;
+            bottom:0; right: 0;
+            background-color: white;
+            
+            animation-timing-function: linear;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            
+            
+        }
+        
+        .box2::before{/*블링*/
+            content: ""; position: absolute;
+            width: 2px; height: 2px;
+            box-shadow: 0px 0px 2px white;
+            bottom:0; right: 0;
+            background-color: white;
+            
+            animation-timing-function: linear;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            
+           
+        }
+        .box2::after{
+            content: ""; position: absolute;
+            width: 2px; height: 2px;
+            box-shadow: 0px 0px 2px white;
+            bottom:0; left: 0px;
+            background-color: white;
+            
+            animation-timing-function: linear;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            
+        }
+        
+        
+        @keyframes bling{
+            0%{
+                left: 0;
+                width: 0px;
+            }
+            25%{
+                
+                left:25%;
+                width: 25%;
+            }
+            50%{
+                
+                box-shadow: 0px 0px 5px white;
+            }
+            75%{
+                
+                left:75%;
+                width: 25%;
+            
+            }
+            100%{
+                left:100%;
+                width:0;
+                
+            }
+        }
+        @keyframes bling2{
+            0%{
+                top: 0;
+                height: 0;
+            }
+            25%{
+                top: 0;
+                height: 0;
+            }
+            50%{
+                height: 0;
+                box-shadow: 0px 0px 5px white;
+            }
+            97%{
+                top:0;
+                height: 100%;
+            }
+            100%{
+                top:100%;
+                height: 0%;
+                
+            }
+        }
+        
+        @keyframes bling3{
+            0%{
+                right: 0;
+                width: 0px;
+            }
+            25%{
+                
+                right :25%;
+                width : 25%;
+            }
+            50%{
+                
+                box-shadow: 0px 0px 5px white;
+            }
+            75%{
+                
+                right: 75%;
+                width: 25%;
+            
+            }
+            100%{
+                right :100%;
+                width:0;
+                
+            }
+        }
+        @keyframes bling4{
+            0%{
+                bottom: 0;
+                height: 0;
+            }
+            25%{
+                bottom: 25%;
+                height: 25%;
+            }
+            50%{
+                height: 40%;
+                box-shadow: 0px 0px 5px white;
+            }
+            75%{
+                bottom:75%;
+                height: 25%;
+            }
+            100%{
+                bottom:100%;
+                height: 0%;
+                
+            }
+        }
+        .howc div table{
+            
+            width: 00px; height: 300px;
+            border: 2px solid white;
+            border-collapse: collapse;
+            
+        }
+        td{
+            width: 50%;
+            border: 2px solid white;
+        }
+        .howc div{
+            
+            position: relative;
+            overflow: hidden;
+            display: none;
+
+        }
+        .howc input:checked~div{
+            display: block;
+        }
+        .howc p{
+            font-size: x-large;
+            width: 900px;
+            border-radius: 1px;
+            cursor: pointer;
+            margin: 20px auto;
+            padding: 30px;
+            border-top: 2px solid white;
+            border-bottom: 2px solid white;
+            background: linear-gradient(to right,transparent,rgba(255, 153, 000,0.8),transparent);
+        }
+    </style>
+  </head> 
+  <body>
+    <div id="background"></div>
+        <div id="container">
+          <!--헤더--> 
+            <header>
+                <div class="out">
+                    <a href="index.html">
+                    <img src="image/main_title.png" alt="main_title">
+                    </a>
+                    <nav>
+                        <div><a href="subIntroduction.html">청계천소개</a></div>
+                        <div><a href="subhistory.html">청계천역사</a></div>
+                        <div><a href="gallery.html">갤러리</a></div>
+                    </nav>
+                    <div class="in">
+                        <a href="team.html"><img src="image/icon_login.png" width="25px"></a>
+                        
+                       
+                    </div>
+                </div>
+            </header>
+            <div id="sectmove">
+                <div><a></a></div>
+                <div class="menu"><a href="subpage1.html" class="road">청계역사길</a></div>
+                <div class="menu"><a href="subpage2.html" class="road">청계활력길</a></div>
+                <div class="menu"><a href="subpage3.html" class="road">청계휴식길</a> </div>
+                <div><a></a></div>
+            </div>
+            <section>
+                <div id="subtitle" style="height: 700px; position: relative; top: 200px;">
+                    <p style=" font-family: 'Nanum Pen Script', cursive; font-size: 8em; text-shadow: 3px 3px 3px black">청계휴식길</p>
+                    <p>"삭막한 도시생활을 보낸 당신, 휴식을 가져보실래요?"</p>
+                    <p>청계천 박물관, 판잣집테마존에서 시간이동도 해보고, 신답철교 위 기차를 보면서 잠시라도 사색의 시간을 가져보세요. <br>시원한 교각의 밑 우거진 수풀과 갈대들 사이로 걷다보면 어느새 사근용답간 인도교.. 드라마 '도깨비'에서 저승사자와 써니가 만나던 그 곳입니다. <br> 다리 위에서 확 트인 청계천을 배경으로 기념사진 한 장~ 청계천에서 여유를 느껴보세요.</p>
+                    <p>click!<br>▼</p>
+                </div>
+                <div id="submenu">
+                    <div class="box1"><a href="#view_art"><img src="image/icon_sub_menu1.png" width="50px"><br>볼거리</a></div>
+                    <div class="box1"><a href="#food_art"><img src="image/icon_sub_menu2.png" width="50px"><br>먹거리</a></div>
+                    <div class="box1"><a href="#travel_art"><img src="image/icon_sub_menu3.png" width="50px"><br>주변관광지</a></div>
+                    <div class="box1"><a href="#rest_art"><img src="image/icon_sub_menu4.png" width="50px"><br>편의시설</a></div>
+                    <div class="box1"><a href="#howcome_art"><img src="image/icon_sub_menu5.png" width="50px"><br>오시는 길</a></div>
+                </div>
+                <div id="sidenav">
+                    <div><a href="index.html"><img src="image/icon_home.png" width="24px"></a></div>
+                    <div><a href="#view_art"><img src="image/icon_sub_menu1.png" width="30px"></a></div>
+                    <div><a href="#food_art"><img src="image/icon_sub_menu2.png" width="30px"></a></div>
+                    <div><a href="#travel_art"><img src="image/icon_sub_menu3.png" width="30px"></a></div>
+                    <div><a href="#rest_art"><img src="image/icon_sub_menu4.png" width="30px"></a></div>
+                    <div><a href="#howcome_art"><img src="image/icon_sub_menu5.png" width="30px"></a></div>
+                    <div><a href="#container">top</a></div>
+                </div>
+                <article id="view_art">
+                    <div id="iconex">
+                        <div><img src="./image/icon_sub_menu1_3.png"><br> 건축물</div>
+                        <div><img src="./image/icon_sub_menu1_2.png"><br> 다리</div>
+                        <div><img src="./image/icon_sub_menu1_1.png"><br> 시설물</div>
+                    </div>
+                    <h2>볼거리</h2>
+                    <h3>성수동 사근다리(용답역)부터 청계천 청혼의벽(마장동)까지 청계천을 따라 청계휴식길을 걷다보면 볼 수 있는 다양한 볼거리를 소개해드립니다!<br> 우리 모두 평소의 짐은 잠시 놓아두고 편안하게 청계휴식길을 걸어볼까요?</h3>
+                    <div class="tabmenu">
+                        <label>
+                            <input type="radio" name="view" checked>
+                            <a class="view">청계천 박물관 <img src="./image/icon_sub_menu1_3.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="view1" checked>
+                                        <img src="./image/3_1_01.png">
+                                        <div>
+                                            <img src="./image/3_1_01.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view1">
+                                        <img src="./image/3_1_02.png">
+                                        <div>
+                                            <img src="./image/3_1_02.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view1">
+                                        <img src="./image/3_1_03.png">
+                                        <div>
+                                            <img src="./image/3_1_03.png">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>청계천 박물관<img src="image/icon_sub_menu1_2b.png"></h4>
+                                    <p>
+                                        청계천박물관은 서울특별시 성동구 마장동에 위치한 서울특별시 산하의 박물관이다. 2005년 9월 26일 개관하였으며, 당시의 명칭은 청계천문화관이었다. 청계천의 역사 및 복원, 도시건축과 관련된 내용을 전시하고 있다. 서울역사박물관의 분관이다.
+                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="view">
+                            <a class="view">청계천 생태학교 <img src="./image/icon_sub_menu1_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="view2" checked>
+                                        <img src="image/생태학교1.png">
+                                        <div>
+                                            <img src="image/생태학교1.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view2">
+                                        <img src="image/생태학교2.png">
+                                        <div>
+                                            <img src="image/생태학교2.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view2">
+                                        <img src="image/생태학교3.png">
+                                        <div>
+                                            <img src="image/생태학교3.png">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>청계천 생태학교<img src="image/iconblack_02.png"></h4>
+                                    <p>
+                                        청계천 생태학교에서는 3월부터 11월까지 매월 다양한 주제의 프로그램을 운영한다. 3월에는 빈병으로 양초만들기 등 업사이클링 체험을 할 수 있는 ‘지구를 지키는 꼬마 히어로’, 4월에는 청계천의 봄을 직접 느껴볼 수 있는 ‘나는야! 봄의 전령사’, 5월에서 6월까지는 청계천에 서식하는 물고기를 관찰하는 ‘도전! 물고기박사’ 프로그램을 운영한다.
+
+                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="view">
+                            <a class="view">도깨비 육교 <img src="./image/icon_sub_menu1_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="view3" checked>
+                                        <img src="image/도깨비다리1.png">
+                                        <div>
+                                            <img src="image/도깨비다리1.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view3">
+                                        <img src="image/도깨비다리2.png">
+                                        <div>
+                                            <img src="image/도깨비다리2.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view3">
+                                        <img src="image/도깨비다리3.png">
+                                        <div>
+                                            <img src="image/도깨비다리3.png">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>도깨비 육교<img src="image/iconblack_02.png"></h4>
+                                    <p>
+                                        나의 일상에 드라마가 찾아온다. 얼마 전 인기리에 종영한 드라마 '도깨비'를 촬영한 장소들을 묶어 테마여행을 떠나는 사람들이 많아졌다. 그에 힘입어 나도 얼마 전 강원도 여행을 다녀왔는데 바로 내 주변에도 '도깨비 촬영지'가 있었다는 걸 알게 되었다. 천호대로를 사이에 두고 한동네는 답십리라 부르고 다른 한동네는 용답동이라 부르지만 이웃해있다 보니 우리 동네 같은 용답동. 그곳엔 신설동과 성수를 오가는 2호선 지하철이 다닌다. 그 사이에 있는 용답역. 용답역은 이 동네 사람들이 운동 삼아 찾고 있는 청계천 용답 나들목으로 향하는 관문이기도 하다. 용답역에는 이웃에 있는 사근동으로 넘어가는 육교가 하나 놓여 있는데 이 육교가 드라마 '도깨비'에 나오면서 일명 '도깨비 육교'로 알려진 도깨비 촬영 장소다.                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="view">
+                            <a class="view">청계천 판잣집 <img src="./image/icon_sub_menu1_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="view4" checked>
+                                        <img src="./image/판잣집.png">
+                                        <div>
+                                            <img src="image/판잣집.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view4">
+                                        <img src="image/판잣집2.png">
+                                        <div>
+                                            <img src="image/판잣집2.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view4">
+                                        <img src="image/판잣집3.png">
+                                        <div>
+                                            <img src="image/판잣집3.png">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>청계천 판잣집</h4>
+                                    <p>
+                                        청계천 판잣집 체험관은 청계천 복원 전이었던 1960~70년 당시 청계천변 판잣집을 재현하여 당시 서민들의 애환과 삶을 조명한 문화·역사 체험 장소이다. 청계천의 역사와 문화 생활상을 재현한 역사갤러리와 잡화점·만홧가게·연탄가게 등의 풍경을 재현한 생활상 체험, 학창시절 교복을 입어볼 수 있는 체험코너가 있다.                                      </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="view">
+                            <a class="view">마장 축산물 시장 <img src="./image/icon_sub_menu1_3.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="view5" checked>
+                                        <img src="image/마장축산물시장.png">
+                                        <div>
+                                            <img src="image/마장축산물시장.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view5">
+                                        <img src="image/마장축산물시장2.png">
+                                        <div>
+                                            <img src="image/마장축산물시장2.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view5">
+                                        <img src="image/마장축산물시장3.png">
+                                        <div>
+                                            <img src="image/마장축산물시장3.png">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>마장 축산물 시장<img src="image/iconblack_03.png"></h4>
+                                    <p>
+                                        조선시대 살곶이 목장의 수말을 기르던 지역에서 그 이름이 유래하였다.
+                                        왕십리 일대와 함께 한양도성 내 채소를 공급하는 배후지 역할을 하였고,
+                                        일제강점기에는 청계천과 접하며 전차, 기동차가 지나가는 지리적 이점에 따라
+                                        1936년 가축시장의 이전 계획이 수립되었다.
+                                        그러나 가축시장과 도축장은 해방 이후가 되어서야 마장동에 세워졌고
+                                        그로부터 지금까지 '마장축산물시장' 이
+                                        서울의 대표 푸줏간 역할을 담당하고 있다.                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="view">
+                            <a class="view">청혼의 벽 <img src="./image/icon_sub_menu1_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="view6" checked>
+                                        <img src="image/청혼의벽1.png">
+                                        <div>
+                                            <img src="image/청혼의벽1.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view6">
+                                        <img src="image/청혼의벽2.png">
+                                        <div>
+                                            <img src="image/청혼의벽2.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view6">
+                                        <img src="image/청혼의벽3.png">
+                                        <div>
+                                            <img src="image/청혼의벽3.png">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>청혼의 벽<img src="image/iconblack_02.png"></h4>
+                                    <p>
+
+                                        '청혼의 벽'은 개인이 제작한 영상이나 메시지 등을 대형 스크린에 띄워 청혼을 할 수 있도록 조성된 공간으로 청계청 두물다리에 위치하고 있다.
+
+                                        서울시설공단은 2008년 서비스가 시작된 이후 지난해까지 총 1276차례의 프로포즈 등 다양한 행사가 진행됐으며, 환상적인 분위기 연출로 청혼 성공률이 거의 100%라고 설명했다.
+                                        
+                                        호박 마차에서의 기념촬영, 하트 조형물 및 분수 쇼, 사랑의 자물쇠 채우기 등도 이용할 수 있다.
+                                        
+                                        청혼의 벽이 있는 두물다리는 성북천과 정릉천 2개의 물길이 청계천과 합류하는 곳으로 서로 다른 환경에서 자란 남녀가 사랑하는 사람과 만난다는 상징적인 의미가 있다.
+                                                                            </p>
+                                </div>
+                            </div>
+                        </label>
+                        
+                    </div>
+                </article>
+                <article id="food_art">
+                    <div id="iconex">
+                        <div><img src="image/icon_sub_menu2_1.png"><br> 한식</div>
+                        <div><img src="image/icon_sub_menu2_2.png"><br> 중식</div>
+                        <div><img src="image/icon_sub_menu2_3.png"><br> 양식</div>
+                        <div><img src="image/icon_sub_menu2_4.png"><br> 일식</div>
+                        <div><img src="image/icon_sub_menu2_5.png"><br> 후식</div>
+                        
+                    </div>
+                    <h2>먹거리</h2>
+                    <h3>마전교(광장시장)부터 DDP(동대문디자인플라자)까지 청계천을 따라 청계확력길을 걷다보면 볼 수 있는 다양한 먹거리를 소개해드립니다!<br> 우리함께 활기차게 청계활력길을 걸어볼까요?</h3>
+                    <div class="tabmenu">
+                        <label>
+                            <input type="radio" name="food" checked>
+                            <a class="food">마장동 정육식당 <img src="./image/icon_sub_menu2_1.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="food1" checked>
+                                        <img src="./image/3_2_01.png">
+                                        <div>
+                                            <img src="./image/3_2_01.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food1">
+                                        <img src="./image/3_2_02.png">
+                                        <div>
+                                            <img src="./image/3_2_02.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food1">
+                                        <img src="./image/3_2_03.png">
+                                        <div>
+                                            <img src="./image/3_2_03.png">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>마장동 정육식당<img src="image/icon_sub_menu2_1b.png"></h4>
+                                    <p>
+                                        마장동의 신선한 고기를 구워서 그자리에서 그대로 맛볼수 있는 식당입니다. <br>소고기맛이 일품이며 시장에서 바로 고기를 조달하는 만큼 신선한 고기맛과, 상대적으로 저렴한 가격으로 고기를 즐길 수 있는 맛집입니다.
+                                    </p>
+                                    <div>
+                                        <div>
+                                            <p>위치 : 마장동 18-12 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;두산타워빌딩 1층</p>
+                                            <p>문의 : 02-2281-3303</p>
+                                            <p>운영시간 : 매일 10:30 - 22:00</p>
+                                        </div>
+                                        <div>
+                                            <p>주요메뉴</p>
+                                            <p>한우등심 1인분(200g) : 22,900원</p>
+                                            <p>한우채끝살 1인분(200g) : 19,800원</p>
+                                            <p>돼지불고기 1인분(200g) : 11,900원</p>
+                                            <p>양념불고기 1인분(200g) : 9,800원</p>
+                                            <p>점심식사 : 8,000원</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="food">
+                            <a class="food">영식당 <img src="./image/icon_sub_menu2_4.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="food2" checked>
+                                        <img src="image/영식당1.png">
+                                        <div>
+                                            <img src="image/영식당1.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food2">
+                                        <img src="image/영식당2.png">
+                                        <div>
+                                            <img src="image/영식당2.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food2">
+                                        <img src="image/영식당3.png">
+                                        <div>
+                                            <img src="image/영식당3.png">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>영식당<img src="image/iconblack_02.png"></h4>
+                                    <p>
+                                        일본식라멘을 즐길 수 있는 라멘가게입니다.<br> 특히 츠케멘(국물에 찍어먹는 라면)의 맛이 일품입니다.
+                                    </p>
+                                    <div>
+                                        <div>
+                                            <p>위치 : 성동구 사근동 82-9 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;두산타워빌딩 1층</p>
+                                            <p>문의 : 02-2618-2003</p>
+                                            <p>운영시간 : 매일 9:00 - 22:00</p>
+                                        </div>
+                                        <div>
+                                            <p>주요메뉴</p>
+                                            <p>미소라멘 : 6,900원</p>
+                                            <p>소유라멘 : 7,900원</p>
+                                            <p>돈코츠라멘 : 7,900원</p>
+                                            <p>츠케멘 : 8,900원</p>
+                                            <p>아부라소바 : 8,900원</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="food">
+                            <a class="food">대도식당 <img src="./image/icon_sub_menu2_1.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="food3" checked>
+                                        <img src="image/대도식당.png">
+                                        <div>
+                                            <img src="image/대도식당.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food3">
+                                        <img src="image/대도식당2.png">
+                                        <div>
+                                            <img src="image/대도식당2.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food3">
+                                        <img src="image/대도식당3.png">
+                                        <div>
+                                            <img src="image/대도식당3.png">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>대도식당<img src="image/iconblack_02.png"></h4>
+                                    <p>
+                                    고깃집의 정석과도 같은 식당입니다<br>
+                                    소고기, 돼지고기, 점심메뉴를 즐길 수 있습니다.
+                                    </p>
+                                    <div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="food">
+                            <a class="food">정식당 <img src="./image/icon_sub_menu2_1.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="food4" checked>
+                                        <img src="image/정식당1.png">
+                                        <div>
+                                            <img src="image/정식당1.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food4">
+                                        <img src="image/정식당2.png">
+                                        <div>
+                                            <img src="image/정식당2.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food4">
+                                        <img src="image/정식당3.png">
+                                        <div>
+                                            <img src="image/정식당3.png">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>정식당<img src="image/iconblack_02.png"></h4>
+                                    <p>
+                                    고기반찬을 메인으로한 한상차림 식당입니다.<br>
+                                    돼지고기 불백, 소불고기메뉴가 인기이며 신선한 채소가 함께 제공되는것이 특징입니다.
+                                    </p>
+                                    <div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="food">
+                            <a class="food">용답기사식당 <img src="./image/icon_sub_menu2_1.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="food5" checked>
+                                        <img src="image/용답기사식당1.png">
+                                        <div>
+                                            <img src="image/용답기사식당1.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food5">
+                                        <img src="image/용답기사식당2.png">
+                                        <div>
+                                            <img src="image/용답기사식당2.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food5">
+                                        <img src="image/용답기사식당3.png">
+                                        <div>
+                                            <img src="image/용답기사식당3.png">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>용답기사식당<img src="image/iconblack_03.png"></h4>
+                                    <p>
+                                        배고픈 당신을 위한 푸짐한 식사메뉴가 있습니다.<br>
+                                        2인분같은 1인분이 나오는 혜자메뉴들이 가득하고 뼈해장국, 선지국등 국밥메뉴등 다양한 메뉴를 저렴한 가격으로 즐길 수 있는 식당입니다.</p>
+                                    
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </article>
+                <article id="travel_art">
+                    <div id="iconex">
+                        <div><img src="image/icon_sub_menu3_1.png"><br> 기념물</div>
+                        <div><img src="image/icon_sub_menu3_2.png"><br> 명소</div>
+                        <div><img src="image/icon_sub_menu3_3.png"><br> 문화재</div>
+                        <div><img src="image/icon_sub_menu3_4.png"><br> 기념관</div>
+                        <div><img src="image/icon_sub_menu3_5.png"><br> 공원</div>
+                    </div>
+                    <h2>주변관광지</h2>
+                    <h3>마전교(광장시장)부터 DDP(동대문디자인플라자)까지 청계천을 따라 청계확력길 주위에서 볼 수 있는 다양한 관광지를 소개해드립니다!<br> 우리함께 활기차게 청계활력길을 걸어볼까요?</h3>
+                    <div class="tabmenu">
+                        <label>
+                            <input type="radio" name="travel" checked>
+                            <a class="travel">성동 상생 도시센터 <img src="./image/icon_sub_menu3_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="travel1" checked>
+                                        <img src="./image/3_03_01.png">
+                                        <div>
+                                            <img src="./image/3_03_01.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel1">
+                                        <img src="./image/3_03_02.png">
+                                        <div>
+                                            <img src="./image/3_03_02.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel1">
+                                        <img src="./image/3_03_03.png">
+                                        <div>
+                                            <img src="./image/3_03_03.png">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>성동 상생도시센터<img src="./image/icon_sub_menu3_2b.png"></h4>
+                                    <p>
+                                        센터에 입주한 다양한 기관들은 지역공동체 발전을 위해 고유한 기능과 역할을 수행하게 된다. 구 관계자는 “다양한 기능의 센터가 한 공간에 모여 서로 협업하면서 시너지 효과를 발휘할 수 있도록 하고자 하는 취지에서 건물명을 ‘성동 상생지원센터’로 했다”고 밝혔다.                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="travel">
+                            <a class="travel">성동 야시장 <img src="./image/icon_sub_menu3_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="travel2" checked>
+                                        <img src="image/성동야시장.png">
+                                        <div>
+                                            <img src="image/성동야시장.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel2">
+                                        <img src="image/성동야시장2.png">
+                                        <div>
+                                            <img src="image/성동야시장2.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel2">
+                                        <img src="image/성동야시장3.png">
+                                        <div>
+                                            <img src="image/성동야시장3.png">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>성동 야시장<img src="image/iconblack_02.png"></h4>
+                                    <p>
+
+                                        경북 경주시 성동동에는 1971년 문을 연 '성동시장'이 자리하고 있습니다.
+                                        경주역 앞에 자리하고 있어 누구나 이용하기 좋은 곳이며 규모 또한 크기 때문에 다양한 점포들을
+                                        만나볼 수가 있습니다. 낮과는 또 다른 매력이 느껴지는 성동 야시장을 만나보세요.                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="travel">
+                            <a class="travel">뚝도시장 <img src="./image/icon_sub_menu3_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="travel3" checked>
+                                        <img src="image/성동용답상가시장.png">
+                                        <div>
+                                            <img src="image/성동용답상가시장.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel3">
+                                        <img src="image/성동용답상가시장2.png">
+                                        <div>
+                                            <img src="image/성동용답상가시장2.png">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel3">
+                                        <img src="image/성동용답상가시장3.png">
+                                        <div>
+                                            <img src="image/성동용답상가시장3.png">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>뚝도시장<img src="image/iconblack_02.png"></h4>
+                                    <p>
+                                        뚝섬을 옛날에 뚝도라고 불렀는데 이곳에 있던 경마장이 과천으로 옮기기 이전인 1960년대부터 형성된 시장이다. 성동구 성수로에 위치하고 있으며, 오전 9시에 개점하여 오후 10시에 폐점한다. 개설된 지 40여 년이 된 뚝도시장은 약 180여 개의 점포로 구성된 중형시장으로 연간 7만여 명이 이용하는 소매시장이다. 오래된 역사만큼이나 낡고 불편했던 시설들을 리모델링하여 깨끗하고 현대적인 시장으로 탈바꿈했다.                                     </p>
+                                </div>
+                            </div>
+                        </label>
+                      
+                    </div>
+                </article>
+                <article id="rest_art" style="height: 1000px;">
+                    <div id="iconex">
+                        <div><img src="image/icon_sub_menu4_1.png"><br> 승강기</div>
+                        <div><img src="image/icon_sub_menu4_2.png"><br> 계단</div>
+                        <div><img src="image/icon_sub_menu4_3.png"><br> 화장실</div>
+                        <div><img src="image/icon_sub_menu4_4.png"><br> 진출입로</div>
+                    </div>
+                    <h2>편의시설</h2>
+                    <div id="p2ss">
+                    <label>
+                        <input type="radio" name="p2s"><img src="image/icon_sub_menu2_5b.png" width="50px">
+                    <div class="ps1"><img src="image/icon_sub_menu2_5b.png" width="25px"></div>
+                    <div class="ps2"><img src="image/icon_sub_menu2_5b.png" width="25px"></div>
+                    <div class="ps3"><img src="image/icon_sub_menu2_5b.png" width="25px"></div>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="p2s"><img src="image/icon_sub_menu3_4b.png" width="50px">
+                    <div class="ps4"><img src="image/icon_sub_menu3_4b.png" width="25px"></div>
+                    <div class="ps5"><img src="image/icon_sub_menu3_4b.png" width="25px"></div>
+                    <div class="ps6"><img src="image/icon_sub_menu3_4b.png" width="25px"></div>
+                    </label>
+                    <label>
+                        <input type="radio" name="p2s"><img src="image/icon_sub_menu3_3b.png" width="50px">
+                    <div class="ps7"><img src="image/icon_sub_menu3_3b.png" width="25px"></div>
+                    <div class="ps8"><img src="image/icon_sub_menu3_3b.png" width="25px"></div>
+                    <div class="ps9"><img src="image/icon_sub_menu3_3b.png" width="25px"></div>
+                    </label>
+                    </div>
+                    
+                </article>
+                <article id="howcome_art">
+                    <div id="iconex">
+                        <div><img src="image/icon_sub_menu5_1.png"><br> 위치</div>
+                        <div><img src="image/icon_sub_menu5_2.png"><br> 버스</div>
+                    </div>
+                    <h2>오시는길</h2>
+                    <div class="howc">
+                    <label>
+                    <input type="checkbox"><p>버스 </p>
+                    <div>
+                        
+                        <table>
+                            <tr>
+                                <td style="background-color: green; font-weight: bold;">1227</td>
+                                <td>성수동 사근 아파트역 하차</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: blue; font-weight: bold;">720</td>
+                                <td>답십리 사거리 하차 후 도보5분</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: blue; font-weight: bold;">421</td>
+                                <td>황물로 사거리 하차 후 도보3분</td>
+                            </tr>
+                        </table>
+                    </div>
+                    </label>
+                    <label>
+                    <input type="checkbox"><p>지하철</p>
+                    <div>
+                        
+                        <table>
+                            <tr>
+                                <td><img src="image/icon_sub_menu5__2c.png" width="150px"> </td>
+                                <td>용답역 1번 출구</td>
+                            </tr>
+                            <tr>
+                                <td><img src="image/icon_sub_menu5__5c.png" width="150px"></td>
+                                <td>답십리역 8번 출구 도보5분</td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    </label>
+                    <label>
+                    <input type="checkbox"><p>도보</p>
+                    <div>
+                        마장동 축산물시장~용답역 사근다리<br>
+                        신나게 걸어요!
+                    </div>
+                    </label>
+                    </div>
+                </article>
+            </section>
+            <footer>
+                <div>
+                  <img src="image/main_title.png" alt="main_title" width="100px" height="50px">
+                  <p>프로젝트 : 서울 명소 소개 사이트 제작하기<br>
+                     프로젝트 팀명 : 비콘찍고가 제작 팀 ｜ 프로젝트 팀원 : 송민석 / 장지영 / 최도권 / 김경미<br>
+                     프로젝트 제작 기간 : 2020.04.01 ~ 2020.05.07<br><br>
+                     Copyright © 2020. 비콘찍고가. All rights reserve.</p>
+                  <p></p>
+                  <p></p>  
+                </div>
+            </footer>
+        </div>
+    
+  </body>
+</html>

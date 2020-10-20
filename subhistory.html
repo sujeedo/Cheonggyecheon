@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1">
+        <title>청계천 홈</title>
+        <style>
+            *{margin: 0 auto; 
+            box-sizing: border-box;}
+            html,body{height: 100%}
+            @font-face{
+                font-family: nanumpen;
+                src: url(font/NanumPenScript.ttf)}      
+            @font-face{
+                font-family: godo;
+                src: url(font/GodoM.ttf)}
+            @font-face{
+                font-family: nanumsquare;
+                src: url(font/NanumSquare_acL.ttf)}
+            @font-face{
+                font-family: sandolt;
+                src: url(font/SD_TT_L.otf)}
+            @font-face{
+                font-family: Musium;
+                src: url(font/Musium_L.ttf)}
+            @font-face{
+                font-family: myeonjo;
+                src: url(font/MapoAgape.ttf)}
+            @font-face{font-family: SDK;
+                 src: url(font/SD_TT_L.otf)}
+            #background{
+                position: fixed;top: 0px; left: 0px;
+                width: 100%; height: 100%; z-index: -10;
+                background: url(image/20200504_191256.jpg) no-repeat;
+                  background-size: cover;}
+           /*아웃박스*/            
+            #container{width: 100%; height: auto; }
+            
+            ::-webkit-scrollbar {width: 10px;} /*스크롤 바*/
+            ::-webkit-scrollbar-track {background-color: gainsboro; border-radius: 10px} /*스크롤 바 밑의 배경*/
+            ::-webkit-scrollbar-thumb {background: rgba(85,107,47,1); border-radius: 10px} /*실질적 스크롤 바*/
+            ::-webkit-scrollbar-thumb:hover {background: mediumturquoise;} /*실질적 스크롤 바 위에 마우스를 올려다 둘 때*/
+            ::-webkit-scrollbar-thumb:active {background: rgba(85,107,47,1);} /*실질적 스크롤 바를 클릭할 때*/
+            
+        /*헤더부분_레이아웃*/
+            header{width: 100%; height: 100px;text-align: center;background-color: rgba(0, 0, 0, 0.6); border-bottom:rgba(200, 200, 200, 0.5) 1px solid; font-family: godo; color: white; position: relative; z-index: 3;}
+            .out{display: flex; width: 1200px; height: 100px;
+                position: relative;}
+            .out>a img{width: 100px; height: 50px; margin-top: 25px;}
+            .out nav{display: flex; padding: 40px; width: 70%;}
+            .in {display: flex; width: 133px; }
+            .in p{margin-top: 37px;}
+            .in img{height: 25px; margin-top: 35px;}
+            header a{text-decoration: none;font-size: large;}
+            nav a{ position: relative;}
+            nav a::after{
+                position: absolute; content: ""; width: 0px; height: 2px; background-color: white; top: 30px; left: 49.8%; transition: 1s; 
+            }
+            nav a::before{
+                position: absolute; content: ""; width: 0px; height: 2px; background-color: white; top: 30px; right: 49.8%; transition: 1s;
+            }
+            nav a:hover::after{width: 50%;}
+            nav a:hover::before{width: 50%;}
+            nav a:link,a:visited{color: white;}
+            nav a:hover{color: khaki;}
+            nav a:active{background-color: royalblue;}
+            header img:nth-of-type(1):hover{border-style: groove;}
+            header p:hover{background-color: slateblue}
+            /*헤더끝*/
+            
+            #sectmove{ position: sticky; top: 0; display: flex; width: 100%; height: 50px; overflow: hidden; z-index: 3; min-width: 1200px;}
+            #sectmove div a{display: block; padding: 15px; height: 50px; width:100%; text-decoration: none; color: white; background-color: rgba(0, 0, 0, 0.6); border-right: 1px solid rgba(200, 200, 200, 0.5); border-bottom: 1px solid rgba(200, 200, 200, 0.5); text-align: center; font-family:SDK; font-size: 18px;}
+            #sectmove .menu {width: 400px;}
+            #sectmove div .road{width: 400px;}
+            #sectmove div{width:20% ;animation: subbar 1s normal;}
+            #sectmove div .road:hover{background-color:rgba(41, 48, 110, 0.8); color: gainsboro;}
+            
+            /*섹션시작*/
+            section{width: 100%;}
+            article{color: black; width: 1200px; background-color: rgba(0, 0, 0, 0); padding-bottom: 800px; position: relative;}
+            article>p{color: white; padding-top: 50px; padding-bottom: 50px; font-size: 4em; font-family: Musium; text-align: center;}
+            .tabmenu label>div {width: 100%; background-color: white; display: block; padding: 20px;}
+            .tabmenu {
+                width: 50px;
+				position : absolute;
+                text-align: center;
+                display: flex;
+                flex-wrap: wrap;
+                left: 0px;
+			}
+            .tabmenu>label>div {
+				position : absolute;
+                left: 50px;
+                top: 0px;
+				display : none;
+                width: 1150px;
+                border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top-right-radius: 10px;
+            }
+            .tabmenu>label:last-child a{border-right: 1px solid white;}
+            .tabmenu>label>input:checked~div{
+				display:block;
+            }
+        
+            .tabmenu>label>input:checked+a{
+                background-color:rgba(255, 86, 170, 0.8); 
+            }
+            .tabmenu a{display: block; border: 1px solid white; height: 110px; /*width: 162.9px;*/ text-align: center; padding-top: 2px; padding-left: 13px;
+                       font-size: 18px; text-decoration: none; 
+                       color: white; border-right: none; cursor: pointer; writing-mode: vertical-lr; background-color: rgba(41, 48, 110, 0.8);}
+            .tabmenu a:hover{cursor: pointer; background-color:rgba(255, 86, 170, 0.8);}
+            input {display: none;}
+            
+            .history{width: 50px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; font-family: SDK;}
+
+            .tabmenu h2{margin-bottom: 20px; font-family: SDK; font-weight: 100;}
+            .tabmenu p{text-align: justify;}
+            
+            footer{background-color: rgba(0, 0, 0, 0.4);
+                   width: 100%; height: 180px; text-align: center; bottom: 0px;}
+            footer div{width: 40%; position: relative; top: 20px;}
+            footer p{color: white; font-family: nanumsquare; font-size: small; line-height: 1.5; padding-top: 25px; padding-bottom: 20px; padding-left: 40px; margin-left: 0;
+                     position: absolute; left: 184px;}
+            footer img{margin-left: 0; position: absolute; left: 84px; top: 50px;}
+            footer p:nth-of-type(2){position: absolute; border-bottom: 1px solid rgba(200, 200, 200, 0.4); width: 444px; height: 90px; left: 224px;}
+            footer p:nth-of-type(3){position: absolute; border-left: 1px solid rgba(200, 200, 200, 0.4); width: 20px; height: 100px; top: 25px; left: 202px;} 
+            @keyframes subbar{
+                0%{margin-top: -50px;}
+                25%{margin-top: -50px;}
+                100%{margin-top: 0px;}
+            }
+            
+    </style>
+  </head> 
+  <body>
+    <div id="background"></div>
+        <div id="container">
+          <!--헤더--> 
+            <header>
+                <div class="out">
+                    <a href="index.html">
+                    <img src="image/main_title.png" alt="main_title">
+                    </a>
+                    <nav>
+                        <div><a href="subIntroduction.html">청계천소개</a></div>
+                        <div><a href="subhistory.html">청계천역사</a></div>
+                        <div><a href="gallery.html">갤러리</a></div>
+                    </nav>
+                    <div class="in">
+                        <a href="team.html"><img src="image/icon_login.png" width="25px"></a>
+                    </div>
+                </div>
+            </header>
+            <div id="sectmove">
+                <div><a></a></div>
+                <div class="menu"><a href="subpage1.html" class="road">청계역사길</a></div>
+                <div class="menu"><a href="subpage2.html" class="road">청계활력길</a></div>
+                <div class="menu"><a href="subpage3.html" class="road">청계휴식길</a> </div>
+                <div><a></a></div>
+            </div>
+            <section>
+                <article>
+                    <p>청계천 역사</p>
+                    <div class="tabmenu">
+                        <label>
+                            <input type="radio" name="history" checked>
+                            <a class="history" >조선초기 </a>
+                            <div>
+                                <h2>조선 초기</h2>
+                                <p>서울의 기후는 계절풍의 영향을 받아 봄·가을에는 건조하고 여름에는 고온다습 하였다. 따라서 청계천은 비가 적은 봄, 가을은 대부분 말라있는 건천 (乾川)이었던 반면, 비가 많이 내리는 여름철 우기에는 조금만 비가 와도 물이 넘쳐 홍수가 날 정도로 건기, 우기에 따라 유량의 변화가 심하였다.
+                                더구나 청계천은 도심 한가운데 위치하고 있었으며, 주변에는 시전행랑과 민가가 밀집해 있었다.</p><br>
+                                <p>그렇기 때문에 비가 많이 와서 물이 넘치면 가옥이 침수되거나 다리가 유실되고 익사자가 발생하는 것은 흔한 일이었다.
+                                따라서 조선초기 도성건설사업과 함께 배수를 위한 물길을 만드는 일은 매우 중요하고 큰 사업이었다. 개천에 대한 정비가 본격적으로 시작된 것은 태종 때부터였다. 태종은 즉위 초인 1406년부터 1407년까지 자연상태에 있었던 하천의 바닥을 쳐내서 넓히고, 양안에 둑을 쌓는 등 몇 차례에 걸친 정비로 하천의 모습을 만들어갔다. 그러나 이것은 완전한 것은 아니었기 때문에 큰비가 올 때마다 피해는 계속되었다.
+                                마침내 1411년(태종11) 12월 하천을 정비하기 위한 임시기구로 '개천도감(開渠都監)'를 설치하고, 다음 해인 1412년(태종12) 1월 15일부터 2월 15일까지 모두 52,800명의 인부를 투입하여 대대적인 공사를 실시하였다. 주요 하천의 양안을 돌로 쌓고, 광통교, 혜정교 등 다리를 돌다리로 만들었다. '개천(開川)'이라는 말은 '내를 파내다'라는 의미로 자연상태의 하천을 정비하는 토목공사의 이름이었는데, 이 때의 개천 공사를 계기로 지금의 청계천을 가리키는 고유명사가 되었다.</p><br>
+                                <p>태종때 개천공사가 주로 개천 본류에 대한 정비였다면, 세종은 지천(支川)과 작은 세천(細川)의 정비에 많은 노력을 기울였다. 특히 종로 남북 쪽으로 늘어선 시전행랑(市廛行廊) 뒤편에 도랑을 파서 물길을 하천 하류에 바로 연결시켰다. 이것은 지천의 물이 한꺼번에 개천 상류로 몰려들어 넘쳐나는 것을 방지함으로써 도심의 홍수를 예방할 수 있었다.
+                                1441년(세종 23)에는 마전교(馬前橋) 서쪽 수중(水中)에 표석을 세웠다. 이 표석에 척(尺)·촌(寸)·분(分) 등 눈금을 기둥 위에 새겨, 수위를 측정할 수 있도록 하였는데, 이것이 바로 수표(水標)이다. 수표는 개천의 수위를 계수화하여 측정함으로써 사전에 홍수를 예방하는데 도움이 되었다.</p><br>
+                                <p>세종때 주목할 만한 사항은 청계천의 성격을 도심의 생활하천으로 규정하였다는 것이다. 서울을 조선의 수도로 정할 때 풍수학상으로 서울 둘러싸고 있는 외수(外水) 한강이 동에서 서로 흐르는 것에 대응하여 도성 한가운데를 흐르는 내수(內水) 청계천이 한강과는 반대로 서에서 동으로 흐르고 있다는 점이 상당히 고려되었다. 그러나 사람들이 많이 살고 있는 도성 한가운데 위치하고 있었고, 오늘날과 같은 하수도 시설이 없었던 당시로서 청계천에는 온갖 쓰레기와 오물들이 흘러들 수밖에 없었다. </p><br>
+                                <p>따라서 청계천의 성격을 두고 풍수학상의 명당수로서 늘 깨끗하게 유지해야한다는 명분론적 주장과 도성에는 많은 사람들이 살고 있어 더러운 것이 많이 생기므로 이것을 배출할 하천이 있어야 한다는 현실적 주장이 맞서고 있었다. 이 논쟁에서 세종이 후자의 주장을 받아들임으로써 청계천은 생활하천으로 결정되었다. 이로써 청계천은 조선왕조 500년 동안 도성에서 배출되는 많은 생활쓰레기를 씻어내는 하수도로서 기능을 함으로써 도성 전체를 깨끗하게 유지할 수 있었다.</p><br>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="history">
+                            <a class="history">조선후기 </a>
+                            <div>
+                                <h2>조선 후기</h2>
+                                <p>태종, 세종 때 조성된 개천은 이후 영조가 즉위하기까지 약 350여년 동안 주목할 만한 변화는 없었다. 비가 와서 물이 넘쳐 부근민가가 침수되고, 다리가 유실되는 등 크고 작은 사고는 있었으나 이것은 개천에서 흔한 일이었다. 무엇보다도 태종, 세종 때에 정비한 개천의 하수처리 용량이 당시 도성 인구 10만정도가 쏟아내는 하수를 처리하는데는 특별한 문제가 없었기 때문이기도 하였다.</p><br>
+                                <p>그러나 17·8세기에는 사정이 많이 달라졌다. 우선 임진(1592년)·병자(1636년) 두 차례의 전란을 겪는 이후 많은 유민(流民)들이 도성으로 몰려들어 서울의 인구가 급증하였다. 1657년(효종 8) 약 8만명 남짓한 서울의 인구는 10년 후인 1669년(현종 10)에는 19만 명으로 늘어났다. 인구의 급증으로 생활하수는 개천이 감당할 수 없을 정도로 크게 증가하였다. 더구나 유민들이 생계를 위하여 개천 변에 채소밭을 경작함으로써 수로가 막혀 배수에도 큰 영향을 미치게 되었다.</p><br>
+                                <p>또한 17·8세기에는 때아닌 이상기온현상으로 대풍, 폭우, 우박, 서리, 눈 등이 끊이지 않았으며, 추위를 이기기 위하여 사람들이 함부로 나무를 베어 땔감으로 사용하였다. 이로 인하여 도성 주변에 있는 산들은 거의 민둥산이 되어 조금만 비가 와도 토사가 쓸려 내려와 개천을 메우게 되었다. 이 때문에 영조가 즉위한 1725년경에는 토사가 쌓여 하천 바닥이 평지와 같은 높이가 되기에 이르러 준천이 불가피한 상황이었다.</p><br>
+                                <p>준천을 시행하기에 앞서 영조는 수 차례에 걸쳐 그 시행여부를 조정의 관리와 백성들에게 물어본 다음 1759년(영조 35)년 10월에는 준천을 관리할 기관으로 준천사(濬川司)를 설치하였다.
+                                1760년(영조 36) 2월 18일 드디어 대역사가 시작되었는데, 이때의 준천은 송기교(현재 광화문 네거리와 신문로 접점 지점)에서 영도교(현재 영미교길) 까지 총 8개 구간으로 나누어 진행되었다. 개천에 두텁게 쌓여 있는 토사를 걷어내고 개천의 깊이와 폭을 예전처럼 회복하였다. 무너진 다리를 보수하고, 상류 및 지류는 물론 경복궁, 경희궁, 창덕궁, 창경궁 등 궁궐 안에 있는 물길도 준설하여 물이 잘 통하게 하였다. 이 준천은 4월 15일까지 총 57일간 시행되었으며, 동원된 인력은 한성부민 15만명, 고정(雇丁-고용인력) 5만명 등 모두 20만명이고, 전(錢) 35,000민(緡), 쌀 2,300여 석(石)이 투입되었다. 준천의 대역사가 진행되는 중에 영조는 수 차례 공사현장을 방문하여 한편은 작업을 독려하고, 다른 한편으로는 일꾼들을 위로하였다. 또한 준천의 시말(始末)과 장래에 해야할 일을 기록한 『준천사실(濬川事實)』을 편찬하여 이후 개천 준설의 지침으로 삼도록 하였다.</p><br>
+                                <p>1773년(영조 49) 6월 영조는 다시 한번 개천 정비를 위한 공역을 실시하였다. 1760년 준천을 할 때 물자와 인력이 부족하여 시행하지 못하였던 개천 양안을 석축(石築)을 하는 것이었다. 작업은 훈련원, 금위영, 어영청 등 삼군문(三軍門)이 작업구간을 3개로 나누어 진행하였다. 양쪽 제방에 돌을 쌓아 튼튼하게 하고, 구불구불한 수로를 곧게 바로 잡았다. 또한 양안에 버드나무를 심어 큰비가 올 때도 제방이 무너지지 않도록 하였다.</p><br>
+                                <p>1773년의 준천은 시작한 지 2개월 후인 8월초 완성하였다. 준천의 역사가 끝나자 영조는 왕세손(후에 정조)와 함께 광통교에 나가 완성된 석축을 살펴본 후, 역부들의 공로를 치하하고, 스스로 「준천명(濬川銘)과 소서(小序)」를 지어 자신이 80평생 동안 준천사업에 얼마나 공을 기울였는가 밝히고 있다.
+                                한편 영조가 개천 준설을 위하여 대역사를 시작한 것은 빈민들을 구제하기 위한 구휼의 목적도 있었다. 그것은 곧 두 차례의 전란 이후 생계를 위하여 도성으로 몰려든 유민들에 대한 구휼이었다. 국가에서는 이들을 구휼하기 위하여 도성축조나 준천과 같은 큰 토목공사를 일으켜 이들을 고용하였다. 영조가 실시한 준천 역시도 5만여 명의 고용인력이 투입되었다. 즉 준천사업은 오늘날 공공근로사업(1930년대 말 대공황시 루즈벨트 대통령이 실시한 New Deal 정책)과 같은 것이었다.</p><br>
+                        
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="history" >
+                            <a class="history">근현대 </a>
+                            <div>
+                                <h2>근현대</h2>
+                                <p>조선시대 북촌(北村)과 남촌(南村)의 경계였던 청계천은 일제강점기가 시작되면서 이른바 '민족의 거리 종로(鐘路)'와 '왜인들의 마을 혼마찌〔本町〕'를 가르는 경계선이 되었다. 이것은 곧 조선인들과 일본인들의 차별의 선이 되었다.</p><br>
+                                <p>먼저 마을 이름에서 조선인들이 거주하는 청계천 북쪽은 ' 동(洞)'과 같은 전래의 마을 이름을 사용하였지만, 일본인들이 주로 거주하는 청계천 남쪽은 '혼마찌(本町, 지금의 명동)'과 같은 일본식 지명을 사용하였다. 도로의 확장, 주요 시설물의 신축 등 도시의 기반시설은 주로 일본인들이 거주하는 청계천 이남에서 집중적으로 이루어졌다. 당시 한 신문에는 "북부(청계천 북쪽)일대에는 아직도 원시시대의 그림자가 그대로 남아 있지마는 본정(本町) 일대는 길에 밥이 떨어져도 주워 먹게 되었다"고 할 정도였다.</p><br>
+                                <p>정작 청계천 자체는 대한제국 이후 약 10여년 동안 방치되었다. 일본은 청계천(淸溪川, 맑은 물이 흐르는 시내)을 이름 값 못하는 '탁계천(濁溪川, 더러운 물이 흐르는 시내)'이라고 비웃었다. 지난 500년 동안 서울사람들의 생활과 함께 흘러온 청계천은 하루아침에 더러운 하수구로 전락하여, 청산의 대상이 되었다.
+                                일본이 청계천을 정비하기 시작한 것은 1918년경부터였으며, 그것도 서울에서 청계천이 가지는 상징성이나 보건, 위생 등 서울사람들의 생활에 있어서 중요성을 인식한 때문이 아니라 조선총독부를 비롯한 조선 식민지배의 중추기관을 청계천 이북으로 이전하기 위한 사전 정비작업의 하나로 시작되었다.</p><br>
+                                <p>1918년부터 일본은 청계천과 일부 지천에 대하여 바닥을 준설하고 양안에 석축을 새로 쌓았다.
+                                1925년부터는 지금의 종로구 신교동에서 도렴동까지, 즉 청계천의 원류라고 할 수 있는 백운동천을 비롯하여 옥류동천, 사직동천 등을 복개하였다. 당시 복개는 하천에 'ㅁ'형의 하수관을 만드는 것으로 이로써 지천들은 물이 흐르는 실개천이 아니라 영락없는 하수구로 전락하였다.</p><br>
+                                <p>1920년대이후 일제는 여러차례 청계천 복개계획을 발표하였다.
+                                1926년에 청계천을 복개하여 1만평의 택지를 조성하려는 계획을 발표하였다. 이 계획은 광통교에서 주교정(舟橋町)까지를 철근 콘크리트로 덮어서 1만평의 부지를 확보하고, 이 곳에 택지와 상가, 위락시설을 조성하려는 것이었다. 1935년에는 청계천을 전면 복개하여 도로를 만들고, 그 위로 고가철도를 건설한다는 계획을 발표하였다. 1939년에는 청계천을 덮어 자동차 전용도로를 만든다는 안이 마련되었고, 1940년에는 청계천을 복개하여 위로는 전차, 밑으로는 지하철을 부설한다는 계획을 발표하였다.이러한 청계천 복개구상은 일본 식민정부가 만주사변, 중일전쟁, 태평양 전쟁으로 치달으면서 조선의 지배를 더욱 공공히 하고, 나아가 서울을 대륙의 병참기지로 육성하기 위함이었다.</p><br>
+                                <p>그러나 이 모든 계획들은 재정문제로 인하여 구상에 그치고 말았으며, 실제 복개가 이루어진 것은 1937년 태평로에서 무교동 구간이었다.
+                                한편 일본의 청계천 정비로 인하여 청계천에 있던 많은 다리들이 수난을 겪었다.
+                                광통교의 경우 다리 옆 전차선이 놓이게 되었으며, 다리는 콘크리트로 보강되어 확장되었다. 광통교 교대에는 지름 1m가 넘는 하수관이 묻히게 되었다. 오간수문은 1907년 완전히 헐리었고, 대신 차로와 전차선로 겸용 다리가 놓여졌다. 하량교, 영도교 등 일부 다리는 근대식 콘크리트 다리로 개축되었으며, 관수교, 주교와 같은 근대식 토목공법을 이용한 새로운 다리도 가설되었다.</p> <br>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="history" >
+                            <a class="history">현대 </a>
+                            <div>
+                                <h2>현대</h2>
+                                <p>따라서 1945년 해방을 즈음하여 청계천에는 토사와 쓰레기가 하천 바닥을 뒤덮고 있었으며, 천변을 따라 어지럽게 늘어선 판자집들과 거기에서 쏟아지는 오수로 심하게 오염되어 있었다. 1949년 광통교에서 영도교까지 청계천을 준설하는 계획을 세우기는 하였지만, 이마저도 1950년 6월 한국전쟁의 발발로 중단되고 말았다. 더구나 한국전쟁이 끝난 다음 생계를 위하여 서울로 모여든 피난민들 중 많은 사람들이 청계천변에 정착하게 되었다. 이들은 반은 땅 위에, 반은 물위에 떠 있는 판자집을 짓고 생활하였다. 천변을 따라 어지럽게 형성된 판자촌과 여기에서 쏟아내는 생활하수로 청계천은 더욱 빠르게 오염되어 갔다. 엄청난 양의 하수가 도심 한가운데를 흐르면서 발생하는 악취로 주변에 살고 있는 주민들은 큰 고통을 받았으며, 도시 전체의 이미지도 크게 손상되었다.</p><br>
+                                <p>1950년대 중반 청계천은 식민지와 전쟁을 겪은 나라의 가난하고 불결한 상황을 보여주는 대표적인 슬럼지역이었으며, 위생 면에서나 도시경관 면에서 청계천을 그대로 두고 서울의 발전은 기대할 수 없다. 기초적인 생활필수품 스스로 해결하기 어려웠던 당시 우리 나라의 경제상황 속에서 청계천 문제를 해결할 수 있는 가장 손쉬우면서도 유일한 방법, 그것은 '복개(覆蓋)'였다.</p><br>
+                                <p>진청계천은 1955년 광통교 상류 약 136m를 복개한 것을 시작으로 1958년부터 본격적으로 복개되기 시작하였다. 1958년 5월∼1961년 12월 광교에서 청계6가 동대문운동장까지, 1965년∼1967년 청계 6가에서부터 청계8가 신설동까지, 1970년∼1977년 청계 8가에서부터 신답철교까지 복개되었다. 고가도로도 건설되었다.
+                                광교에서부터 마장동에 이르는 총 길이 5,6km, 폭 16m의 청계고가도로가1967년 8월 15일 착공되어 1971년 8월 15일 완공되었다.
+                                청계천 주변에 어지럽게 늘어선 판자집은 헐리고 대신 현대식 상가건물이 들어섰으며, 토사와 쓰레기, 오수가 흐르던 하천은 깨끗하게 단장된 아스팔트 도로로 탈바꿈하였다. 시원하게 뚫린 복개도로와 고가도로위에는 자동차가 쏜살같이 달렸다. 불과 몇 년 전만 해도 서울의 가장 부끄러운 곳이었던 청계천은 근대화·산업화의 상징으로 서울의 자랑거리가 되었다.</p><br>
+                                <p>변청계천이 복개 이후 약 40년이 지난 오늘날 청계천은 도심산업의 중심지로서 도로 양편으로 공구상, 조명가게, 신발상회, 의류상가, 헌책방, 벼룩시장 등 크고 작은 상가들이 밀집해 있고 수많은 사람들이 오간다. 복개도로와 고가도로에는 하루에도 수십만 대의 차량들이 지나 다닌다.
+                                그러나 더 이상 청계천을 서울의 자랑거리로 생각하는 사람은 없다. 오히려 서울에서 가장 복잡하고 시끄러운 곳의 대명사가 되었으며, 청계천 주변을 낙후시키고, 서울의 이미지를 해치는 주범으로 지적 받고 있으며, 청계고가도로를 이루고 있는 거대한 콘크리트 덩어리는 근대화·산업화의 상징이 아니라 개발시대의 무지가 낳은 흉물로 인식되고 있다.
+                                돌이켜 보면 청계천만큼 지난 50년 동안 서울의 역사를 분명하게 농축하고 있는 곳은 없다. 1950년대 말 쓰레기와 오수로 뒤덮인 불결과 빈곤의 상징에서, 60·70년대는 성공적인 산업화·근대화로 상징되었으며, 80·90년대는 공구, 인쇄, 의류 등 도심산업의 중심지임과 동시에 소음·혼잡·매연 등으로 도 .시발전의 가장 큰 걸림돌이 되고 있다.</p><br>
+                                <p>1990년대에 들어 청계천의 복개 구조물과 노후한 청계고가도로의 안전 문제가 지속적으로 대두되었다. 이에 이명박 당시 서울특별시장 후보는 청계천 복원을 공약하였고, 32대 시장으로 당선되었다. 2003년 7월 1일에 청계고가도로의 철거가 시작되었고, 광화문 동아일보사 앞부터 성동구 신답 철교에 이르는 약 5.84km의 구간을 복원하는 공사는 38억6,739백만원을 들여 2005년 9월 30일에 완료되었다. 복원된 청계천의 통수단면 위쪽을 흐르는 물은 잠실대교 부근의 자양취수장에서 취수한 한강물과 도심의 지하철역 부근의 지하수를 정수·소독 처리하여 조달하며, 통수단면 아래쪽을 흐르는 물은 도심의 오·폐수이다.</p>    <br>
+                        
+                            </div>
+                        </label>     
+                    </div>
+                </article>
+            </section>
+            <footer>
+                <div>
+                  <img src="image/main_title.png" alt="main_title" width="100px" height="50px">
+                  <p>프로젝트 : 서울 명소 소개 사이트 제작하기<br>
+                     프로젝트 팀명 : 비콘찍고가 제작 팀 ｜ 프로젝트 팀원 : 송민석 / 장지영 / 최도권 / 김경미<br>
+                     프로젝트 제작 기간 : 2020.04.01 ~ 2020.05.07<br><br>
+                     Copyright © 2020. 비콘찍고가. All rights reserve.</p>
+                  <p></p>
+                  <p></p>  
+                </div>
+            </footer>
+      </div>
+    
+  </body>
+</html>

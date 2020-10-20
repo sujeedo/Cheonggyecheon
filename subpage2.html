@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1">
+        <title>청계천 홈</title>
+        <style>
+            *{margin: 0 auto; 
+            box-sizing: border-box;}
+            html,body{height: 100%}
+            @font-face{
+                font-family: nanumpen;
+                src: url(font/NanumPenScript.ttf)}      
+            @font-face{
+                font-family: godo;
+                src: url(font/GodoM.ttf)}
+            @font-face{
+                font-family: nanumsquare;
+                src: url(font/NanumSquare_acL.ttf)}
+            @font-face{
+                font-family: sandolt;
+                src: url(font/SD_TT_L.otf)}
+            @font-face{
+                font-family: Musium;
+                src: url(font/Musium_L.ttf)}
+            @font-face{
+                font-family: myeonjo;
+                src: url(font/MapoAgape.ttf)}
+            @font-face{font-family: SDK;
+                 src: url(font/SD_TT_L.otf)}
+            #background{
+                position: fixed;top: 0px; left: 0px;
+                width: 100%; height: 100%; z-index: -10;
+                background: url(image/chung_2.jpg) no-repeat;
+                  background-size: cover;}
+           /*아웃박스*/            
+            #container{width: 100%; height: auto; }
+            
+            ::-webkit-scrollbar {width: 10px;} /*스크롤 바*/
+            ::-webkit-scrollbar-track {background-color: gainsboro; border-radius: 10px} /*스크롤 바 밑의 배경*/
+            ::-webkit-scrollbar-thumb {background: slateblue; border-radius: 10px} /*실질적 스크롤 바*/
+            ::-webkit-scrollbar-thumb:hover {background: mediumturquoise;} /*실질적 스크롤 바 위에 마우스를 올려다 둘 때*/
+            ::-webkit-scrollbar-thumb:active {background: slateblue;} /*실질적 스크롤 바를 클릭할 때*/
+            
+        /*헤더부분_레이아웃*/
+            header{width: 100%; height: 100px; text-align: center; 
+                   background-color: rgba(0, 0, 0, 0.5); border-bottom:rgba(200, 200, 200, 0.3) 1px solid; 
+                   font-family: godo; color: white; 
+                   position: relative; z-index: 3;}
+            .out{display: flex; width: 1200px; height: 100px;
+                 position: relative;}
+            .out>a img{width: 100px; height: 50px; margin-top: 25px;}
+            .out nav{display: flex; padding: 40px; width: 70%;}
+            .in {display: flex; width: 133px;}
+            .in p{margin-top: 37px;}
+            .in img{height: 25px; margin-top: 35px;}
+            header a{text-decoration: none; font-size: large;}
+            nav a{position: relative;}/*글자 하단 라인 시작*/
+            nav a::after{position: absolute; content: ""; width: 0px; height: 2px; 
+                         background-color: white; top: 30px; left: 49.8%; transition: 0.5s;}
+            nav a::before{position: absolute; content: ""; width: 0px; height: 2px; 
+                          background-color: white; top: 30px; right: 49.8%; transition: 0.5s;}
+            nav a:hover::after{width: 50%;}
+            nav a:hover::before{width: 50%;}/*글자 하단 라인 끝*/
+            nav a:link,a:visited{color: white;}
+            nav a:hover{color: khaki;}
+            nav a:active{background-color: royalblue;}
+            header img:nth-of-type(1):hover{border-style: groove;}
+            header p:hover{cursor:context-menu;}
+            
+            
+            /*헤더끝*/
+            /*상단스티키 바시작*/
+            #sectmove{ position: sticky; top: 0; display: flex; width: 100%; height: 50px; overflow: hidden; z-index: 3; min-width: 1200px;}
+            #sectmove div a{display: block; padding: 15px; height: 50px; width:100%; text-decoration: none; color: white; background-color: rgba(0, 0, 0, 0.5); border-right: 1px solid rgba(200, 200, 200, 0.5); border-bottom: 1px solid rgba(200, 200, 200, 0.5); text-align: center; font-family:SDK; font-size: 18px;}
+            #sectmove .menu {width: 400px;}
+            #sectmove div .road{width: 400px;}
+            #sectmove .menu:nth-child(3) a{background-color:rgba(106,90,205,0.8);}
+            #sectmove div{width:20% ;animation: subbar 1s normal;}
+            #sectmove div .road:hover{background-color:rgba(106,90,205,0.8); color: khaki;}
+            /*스티키바 끝*/
+            
+            /*섹션부분 시작*/
+            section{width: 100%; height: 100%;
+                text-align: center;
+                margin: 0 auto;
+            }
+            /*메인 글자*/
+            #subtitle{width: 1200px;}
+            #subtitle p{color: white;}
+            #subtitle p:first-child{padding-top: 50px; font-size: 7em; font-family: Musium; text-align: center;animation-name: ang; animation-duration: 1.5s;}
+            #subtitle p:nth-child(2){margin-top: 30px; font-size: 2em; font-family: nanumpen;animation-name: ang1; animation-duration: 2s;}
+            #subtitle P:nth-child(3){margin-top: 10px; line-height: 1.5; 
+                font-weight: 600; font-family: nanumsquare; animation-name: ang2; animation-duration: 3s;}
+            #subtitle p:nth-child(4){margin-top: 10px; font-size: 25px; font-family: nanumpen; animation: semo 0.4s infinite alternate linear; z-index: 1;}
+            
+            /* 세부위치 이동 메뉴*/
+            #submenu{width: 1200px; display: flex; flex-wrap: wrap; margin-top: 10px; padding-bottom: 500px;}
+            #submenu div{ width: 19%; height: 450px; border: 1px solid white; margin-bottom: 10px;  background-color: rgba(0, 0, 0, 0.4); }
+            
+            #submenu div:first-child{background-image: url(image/bridge5-2.jpg);background-size: cover; background-position: center;}
+            #submenu div:nth-child(2){background-image: url(image/food3-2.jpg);background-size: cover; background-position: center;}
+            #submenu div:nth-child(3){background-image: url(image/travel4-2.jpg);background-size: cover; background-position: center;}
+            #submenu div:nth-child(4){background-image: url(image/sub_menu_back4.png);background-size: cover; background-position: center;}
+            #submenu div:nth-child(5){background-image: url(image/train.jpg);background-size: cover; background-position: center;}
+            
+            #submenu div a{ display: block; width: 100%; height: 450px; text-decoration: none; color: white; font-family: SDK; font-size: 22px;padding-top: 220px;}
+            #submenu div:hover{background-color: rgba(55, 54, 255, 0.5);}
+            
+            /*사이드 네비게이션*/
+            #sidenav {position: fixed; right: 0px; top: 310px;}
+            #sidenav div{background-color: rgba(0, 0, 0, 0.4); width: 50px; height: 50px; border: 1px solid rgba(200, 200, 200, 0.2); }
+            #sidenav>div:hover{background-color: slateblue;}
+            #sidenav>div a{display: block; width: 50px; height: 50px; padding: 10px; text-decoration: none;color: white;}
+            #sidenav div:last-child{height: 50px; padding-top: 5px; font-family: SDK;}
+            
+            /*세부 내용*/
+            article{color: white; width: 1200px; background-color: rgba(0, 0, 0, 0.4);margin-bottom: 50px; padding-bottom: 600px;}
+            #iconex{text-align: right; font-size: 0.64em; padding-top:  50px; padding-right: 20px;}
+            #iconex img{width: 22px; margin-right: 0px}
+            #iconex div{display: inline-block; text-align: center; width: 45px;}
+            article h2{padding: 20px; padding-top: 0px;font-family: Musium; font-size: 3em;}
+            article h3{width: 100%; font-size: 1em; padding: 50px;font-family: nanumsquare;line-height: 1.5;}
+            #veiw div h4{width: 100%; font-family: Musium; color: black; font-size: 2em; text-align: left; padding-bottom: 25px;}
+            #veiw div h4 img{width: 32px; margin-left: 10px;}
+            #veiw{width: 95%; background-color: antiquewhite; display: flex; padding: 20px;}
+            #veiw img{width: 45%;}
+            #veiw div{display: block; padding: 20px;}
+            #veiw div p{color: black; text-align: left;}
+            
+            #rest_art{padding-bottom: 60px;}
+            #rest_art>img{width: 90%; margin-top: 50px;}
+            
+            #howcome_art{padding-bottom: 800px;}
+            #howcome_art>div{margin-top: 50px;}
+            /* 세부내용 안의 메뉴*/
+            .tabmenuside2 h4{width: 100%; font-family: Musium; color: black; font-size: 2em; text-align: left; padding-bottom: 25px;}
+            .tabmenuside2 h4 img{width: 32px; margin-left: 10px;}
+            .tabmenu label>div {width: 100%; background-color: white; display: flex; padding: 20px;}
+            .tabmenuside1{width: 50%;display: flex; position: relative; top: 370px; text-align: center;}
+            
+            .tabmenuside1>img{width: 100%; height: 365px; position: relative; top: -370px; z-index: 1;}
+            .tabmenuside1 label>div{position: absolute; display: none; top: -370px; left: 0; padding:0;}
+            .tabmenuside1 label>div img{width: 100%;}
+            .tabmenuside1 label>img{position: relative;width: 98%; z-index: 2;cursor: pointer;}
+            .tabmenuside1 label>input:checked~div{display: block;}
+            .tabmenuside1>label>input:checked+img{border-bottom: 5px solid rgba(55, 54, 255, 0.8);}
+            
+            .tabmenuside2{ width: 50%; display: block; padding: 20px;}
+            .tabmenuside2 h3{font-family: nanumpen; color: black; font-size: 1.5em; padding: 10px;}
+            .tabmenuside2>p{ padding-left: 30px; color: black; text-align: left; font-family: nanumsquare; line-height: 1.5; font-weight: bold; }
+            .tabmenuside2>div{display: flex; margin-top: 50px;}
+            .tabmenuside2>div div{width: 50%;}
+            .tabmenuside2>div p{padding-left: 30px; color: black; text-align: left; font-family: nanumsquare; line-height: 1.5; font-weight: bold;padding-bottom: 10px}
+            .tabmenuside2>div div:nth-child(2){background-color: azure; box-shadow: 2px 2px 2px gray;}
+            .tabmenuside2>div div:nth-child(2) p{text-align: center; padding: 5px;}
+            .tabmenuside2 table{color: black; border: 2px dotted blue; width: 90%; margin-top: 50px;font-family: nanumsquare; line-height: 1.5; font-weight: bold; padding: 10px;}
+            .tabmenu {
+                width :95%;
+				margin : 0 auto;
+				position : relative;
+                text-align: left;
+                display: flex;
+			}
+            .tabmenu>label>div {
+				position : absolute;
+                left: 0px;
+				display : none;
+                height: 550px;
+            }
+            .tabmenu .come{
+                height: 750px;
+                text-align: center;
+            }
+            .tabmenu .come p{width: 100%; font-family: Musium; color: black; font-size: 2em; text-align: center; font-weight: 600; margin-top:10px; margin-bottom: 50px;}
+            .tabmenu .come>img{width: 89%;}
+            .tabmenu>label:last-child a{border-right: 1px solid white;}
+            .tabmenu>label>input:checked~div{
+				display:flex;
+            }
+            
+            .tabmenu>label>input:checked~.come{display: block;}
+        
+            .tabmenu>label>input:checked+a{
+                background-color:slateblue; 
+            }
+            .tabmenu a{display: block; border: 1px solid white; height: 40px; /*width: 162.9px;*/ text-align: center; padding-top: 8px; text-decoration: none; color: white; border-right: none;cursor: pointer;}
+            .view{width: 162.9px;}
+            .food{width:285px;}
+            .travel{width: 228px;}
+            .transport{width: 285px;}
+            #lasta{border-right: 1px solid white;}
+            .tabmenu a:hover{cursor: pointer; background-color:rgba(55, 54, 255, 0.4); }
+            .tabmenu a>img{width: 20px; margin-bottom: -5px;}
+            input {display: none;}
+            .temp{width: 48.25%; position: absolute;}
+            .temp img{width: 100%; }
+            
+            #icon_scroll{width: 100%; position: absolute; top: 1160px; color: white; font-family: nanumpen; font-size: 20px; animation: semo 0.4s infinite alternate linear;}
+            
+            .bling{
+                position: relative;
+                overflow: hidden;
+            }
+            .bling::before{
+                content: ""; position: absolute;
+                width: 1000px; height: 10px; background-color: rgba(255, 255, 255, 0.1); 
+                top: -580px; left: -250px;
+                transform: rotate(-45deg);
+            }
+        
+            .bling::after{
+                content: ""; position: absolute;
+                width: 1000px; height: 180px; background-color: rgba(255, 255, 255, 0.1); 
+                top: -300px; left: -420px;
+                transform: rotate(-45deg);
+            }
+            .bling:hover.bling::before{
+                top: 700px; left: -150px;
+                background-color: rgba(255, 255, 255, 0.6);
+                transition: 1.1s;
+                height: 20px;
+            }
+            .bling:hover.bling::after{
+                top: 800px; left: -200px;
+                background-color: rgba(255, 255, 255, 0.6);
+                transition: 1.1s;
+                height: 100px;
+            }
+            
+            /*푸터 시작*/
+            footer{background-color: rgba(0, 0, 0, 0.4);
+                   width: 1200px; height: 180px; text-align: center; bottom: 0px;}
+            footer div{width: 63.5%; position: relative; top: 20px;}
+            footer p{color: white; font-family: nanumsquare; font-size: small; line-height: 1.5; padding-top: 25px; padding-bottom: 20px; padding-left: 40px; margin-left: 0;
+                     position: absolute; left: 184px;}
+            footer img{margin-left: 0; position: absolute; left: 84px; top: 50px;}
+            footer p:nth-of-type(2){position: absolute; border-bottom: 1px solid rgba(200, 200, 200, 0.4); width: 444px; height: 90px; left: 224px;}
+            footer p:nth-of-type(3){position: absolute; border-left: 1px solid rgba(200, 200, 200, 0.4); width: 20px; height: 100px; top: 25px; left: 202px;}
+ 
+            
+            @keyframes subbar{
+                0%{margin-top: -50px;}
+                25%{margin-top: -50px;}
+                100%{margin-top: 0px;}
+            }
+            @keyframes semo{
+                0%{transform: translateY(0px);}
+                100%{transform: translateY(10px);}
+            }
+            @keyframes ang{
+                0%{margin-left: -20px; opacity: 0;}
+                33%{margin-left: -20px; opacity: 0;}
+                100%{margin-left: 0px; opacity: 1;}
+
+            }
+            @keyframes ang1{
+                0%{margin-left: -20px; opacity: 0;}
+                55%{margin-left: -20px; opacity: 0;}
+                100%{margin-left: 0px; opacity: 1;}
+            }
+            @keyframes ang2{
+                0%{margin-left: -20px; opacity: 0;}
+                66%{margin-left: -20px; opacity: 0;}
+                100%{margin-left: 0px; opacity: 1;}
+            }
+            
+    </style>
+  </head> 
+  <body>
+    <div id="background"></div>
+        <div id="container">
+          <!--헤더--> 
+            <header>
+                <div class="out">
+                    <a href="index.html">
+                    <img src="image/main_title.png" alt="main_title">
+                    </a>
+                    <nav>
+                        <div><a href="subIntroduction.html">청계천소개</a></div>
+                        <div><a href="subhistory.html">청계천역사</a></div>
+                        <div><a href="gallery.html">갤러리</a></div>
+                    </nav>
+                    <div class="in">
+                        <a href="team.html"><img src="image/icon_login.png" width="25px"></a>
+                    </div>
+                </div>
+            </header>
+            <div id="sectmove">
+                <div><a></a></div>
+                <div class="menu"><a href="subpage1.html" class="road">청계역사길</a></div>
+                <div class="menu"><a href="subpage2.html" class="road">청계활력길</a></div>
+                <div class="menu"><a href="subpage3.html" class="road">청계휴식길</a> </div>
+                <div><a></a></div>
+            </div>
+            <section>
+                <div id="subtitle">
+                    <p>청계활력길</p>
+                    <p>"바쁜 일상 속, 힐링이 필요하신가요?"</p>
+                    <p>고된 하루를 보낸 당신, 오늘 하루는 나를 위한 소소한 문화휴식을 선물해보세요.<br>광장시장에서 유명한 OO을 먹고 청계천과 동대문성곽공원을 따라 걸으며 휴식을 취하고...<br> 오간수교 수상패션쇼를 관람하며 무대의 주인공이된 나를 상상해보세요.<br>마직막으로 동대문디자인플라자에서 눈요기 구경까지 즐가다보면 어느새 일상에서 활력과 에너지를 얻을수 있답니다.</p>
+                    <p>click!<br>▼</p>
+                </div>
+                <div id="submenu">
+                    <div class="bling"><a href="#view_art"><img src="image/icon_sub_menu1.png" width="45px"><br>볼거리</a></div>
+                    <div class="bling"><a href="#food_art"><img src="image/icon_sub_menu2.png" width="45px"><br>먹거리</a></div>
+                    <div class="bling"><a href="#travel_art"><img src="image/icon_sub_menu3.png" width="45px"><br>주변관광지</a></div>
+                    <div class="bling"><a href="#rest_art"><img src="image/icon_sub_menu4.png" width="45px"><br>편의시설</a></div>
+                    <div class="bling"><a href="#howcome_art"><img src="image/icon_sub_menu5.png" width="45px"><br>오는시길</a></div>
+                </div>
+                <div id="sidenav">
+                    <div class="bling"><a href="index.html"><img src="image/icon_home.png" width="24px"></a></div>
+                    <div class="bling"><a href="#view_art"><img src="image/icon_sub_menu1.png" width="30px"></a></div>
+                    <div class="bling"><a href="#food_art"><img src="image/icon_sub_menu2.png" width="30px"></a></div>
+                    <div class="bling"><a href="#travel_art"><img src="image/icon_sub_menu3.png" width="30px"></a></div>
+                    <div class="bling"><a href="#rest_art"><img src="image/icon_sub_menu4.png" width="30px"></a></div>
+                    <div class="bling"><a href="#howcome_art"><img src="image/icon_sub_menu5.png" width="30px"></a></div>
+                    <div class="bling"><a href="#container">top</a></div>
+                </div>
+                <div id="icon_scroll"><!--섹션 스크롤 아이콘--> 
+                    <p>scroll</p>
+                    <img img src="image/icon_scroll.png" width="20px">
+                </div>
+                <article id="view_art">
+                    <div id="iconex">
+                        <div><img src="image/icon_sub_menu1_3.png"><br> 건축물</div>
+                        <div><img src="image/icon_sub_menu1_2.png"><br> 다리</div>
+                        <div><img src="image/icon_sub_menu1_1.png"><br> 시설물</div>
+                    </div>
+                    <h2>볼거리</h2>
+                    <h3>마전교(광장시장)부터 DDP(동대문디자인플라자)까지 청계천을 따라 청계확력길을 걷다보면 볼 수 있는 다양한 볼거리를 소개해드립니다!<br> 우리함께 활기차게 청계활력길을 걸어볼까요?</h3>
+                    <div class="tabmenu">
+                        <label>
+                            <input type="radio" name="view" checked>
+                            <a class="view">새볔다리 <img src="image/icon_sub_menu1_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="view1" checked>
+                                        <img src="image/bridge1-1.jpg">
+                                        <div>
+                                            <img src="image/bridge1-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view1">
+                                        <img src="image/bridge1-2.jpg">
+                                        <div>
+                                            <img src="image/bridge1-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view1">
+                                        <img src="image/bridge1-3.jpg">
+                                        <div>
+                                            <img src="image/bridge1-3.jpg">
+                                        </div>
+                                    </label>
+                                    px
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>새벽다리<img src="image/icon_sub_menu1_2b.png"></h4>
+                                    <h3>새벽시장의 활기와 향수를 담은 다리</h3>
+                                    <p>
+                                        종로구 예지동 332번지와 중구 주교동 45번지 사이 청계천에 있는 다리이다. 시장 천막의 이미지를 적용하여 동대문 재래시장의 역사성과 향수를 연출하고자 설계되었다. 2004년 4월 24일 서울특별시지명위원회에서 새벽시장의 활기와 향수를 담은 명칭이라고 하여 새벽다리라고 제정하였다. 폭 6m, 길이 22.8m로 청계천이 복원되면서 2005년 9월 30일 GS건설과 현대산업에 의해 준공되었다.
+                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="view">
+                            <a class="view">마전교 <img src="image/icon_sub_menu1_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="view2" checked>
+                                        <img src="image/bridge2-1.jpg">
+                                        <div>
+                                            <img src="image/bridge2-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view2">
+                                        <img src="image/bridge2-2.jpg">
+                                        <div>
+                                            <img src="image/bridge2-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view2">
+                                        <img src="image/bridge2-3.jpg">
+                                        <div>
+                                            <img src="image/bridge2-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>마전교<img src="image/icon_sub_menu1_2b.png"></h4>
+                                    <h3>다리 옆 광장에서 마필을 매매하던게 이름의 유래가 된 다리</h3>
+                                    <p>
+                                        서울특별시 종로구 종로5가와 을지로(乙支路) 사이 청계천(淸溪川)에 있던 조선시대의 다리인데 조선 태종(太宗) 때는 창선방교(彰善坊橋)로 부르다 성종(成宗) 때부터는 태평교(太平橋)로 불렀으며 마전교라고 부르기 시작한 것은 영조(英祖) 때로, 다리 옆 광장에서 마필을 매매하면서 이런 이름이 붙었다.2003년 7월부터 청계천복원사업의 일환으로 세워지는 22개 다리 가운데 마전교도 포함되어 있다.
+                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="view">
+                            <a class="view">나래교 <img src="image/icon_sub_menu1_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="view3" checked>
+                                        <img src="image/bridge3-1.jpg">
+                                        <div>
+                                            <img src="image/bridge3-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view3">
+                                        <img src="image/bridge3-2.jpg">
+                                        <div>
+                                            <img src="image/bridge3-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view3">
+                                        <img src="image/bridge3-3.jpg">
+                                        <div>
+                                            <img src="image/bridge3-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>나래교<img src="image/icon_sub_menu1_2b.png"></h4>
+                                    <h3>나비의 힘찬 나래짓을 3차원 아치와 케이블로 형상화한 다리</h3>
+                                    <p>
+                                        종로구 종로5가 321번지와 중구 당산동 19번지 사이 청계천에 있는 다리이다. 나비의 힘찬 나래짓을 이미지화 하였으며, 3차원 아치와 케이블로 나비의 형상화를 유도하였다. 나비가 날개를 활짝 편 형상으로 동대문 의류상권이 세계 패션 1번지로 비상하는 의미를 담고 있다. 폭 6m, 길이 22.8m로 청계천이 복원되면서 2005년 9월 30일 GS건설과 현대산업에 의해 준공되었다.
+                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="view">
+                            <a class="view">버들다리 <img src="image/icon_sub_menu1_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="view4" checked>
+                                        <img src="image/bridge4-1.jpg">
+                                        <div>
+                                            <img src="image/bridge4-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view4">
+                                        <img src="image/bridge4-2.jpg">
+                                        <div>
+                                            <img src="image/bridge4-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view4">
+                                        <img src="image/bridge4-3.jpg">
+                                        <div>
+                                            <img src="image/bridge4-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>버들다리<img src="image/icon_sub_menu1_2b.png"></h4>
+                                    <h3>다리주변에 왕버들이 많았었다는 것이 이름의 유래가 된 다리</h3>
+                                    <p>
+                                        종로구 종로5가 319번지와 중구 을지로6가 17번지 사이 청계천에 있는 다리이다. 보행자의 이동 편리를 위해 차도와 보도를 분리하여 퍼걸러를 설치함으로써 도심 속의 정원을 연출하였다. 다리 이름은 과거 오간수문 상류에 왕버들이 많았었다는 데서 유래되었다. 폭 17m, 길이 23.3m로 청계천이 복원되면서 2005년 9월 30일 GS건설과 현대산업에 의해 준공되었다.
+                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="view">
+                            <a class="view">수상패션쇼 <img src="image/icon_sub_menu1_1.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="view5" checked>
+                                        <img src="image/view1-1.jpg">
+                                        <div>
+                                            <img src="image/view1-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view5">
+                                        <img src="image/view1-2.JPG">
+                                        <div>
+                                            <img src="image/view1-2.JPG">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view5">
+                                        <img src="image/view1-3.jpg">
+                                        <div>
+                                            <img src="image/view1-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>수상패션쇼<img src="image/icon_sub_menu1_1b.png"></h4>
+                                    <p>
+                                        국내에서 유일하게 물위에 설치된 수상무대에서 진행되는 청계천 수상패션쇼는 동대문 패션타운과 연계하여 청계천을 패션문화와 문화공연 체험 공간으로 운영하고 신진 디자이너와 신인모델들을 결합하여 신선한 패션쇼를 진행하고 있으며, 대학 모델학과 및 의상학과 졸업작품전을 통한 아마추어리즘이 정착될수 있도록 노력하고 있습니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="view">
+                            <a class="view">오간수교 <img src="image/icon_sub_menu1_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="view6" checked>
+                                        <img src="image/bridge5-1.jpg">
+                                        <div>
+                                            <img src="image/bridge5-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view6">
+                                        <img src="image/bridge5-2.jpg">
+                                        <div>
+                                            <img src="image/bridge5-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view6">
+                                        <img src="image/bridge5-3.jpg">
+                                        <div>
+                                            <img src="image/bridge5-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>오수간교<img src="image/icon_sub_menu1_2b.png"></h4>
+                                    <h3>다섯 칸의 수문을 설치했다고 한것이 이름의 유래가된 다리</h3>
+                                    <p>
+                                        이 다리는 다섯 칸의 수문을 설치했다고 하여 오간수다리 · 오간수문 등으로 불렀으나 성종 12년(1481)까지만 해도 수문이 3개였고 후에 몇 차례 증축을 거쳐 5개의 수문으로 확장되었다.<br> 
+                                        1907년 일제가 청계천 물이 잘 흘러가게 한다는 명목으로 오간수문을 모두 헐어버리고 콘크리트 다리로 교체하였다가 후에 그 위의 성곽이 훼손되면서 함께 없어졌다.<br>
+                                        2003년 7월부터 청계천복원사업의 일환으로 청계천 역사유적을 발굴할 때 오간수문의 아래쪽 끝받침과 홍예(虹霓:무지개 모양의 구조물) 기초부, 돌거북 등이 발굴됨에 따라 2004년부터 복원사업을 추진하였다.<br>
+                                        새롭게 만들어진 오간수교는 오간수문의 전통적인 모양을 살려 5개 수문과 무지개 모양의 홍예 아치를 재현하였다.
+                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="view">
+                            <a class="view">맑은내다리 <img src="image/icon_sub_menu1_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="view7" checked>
+                                        <img src="image/bridge6-1.jpg">
+                                        <div>
+                                            <img src="image/bridge6-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view7">
+                                        <img src="image/bridge6-2.jpg">
+                                        <div>
+                                            <img src="image/bridge6-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="view7">
+                                        <img src="image/bridge6-3.jpg">
+                                        <div>
+                                            <img src="image/bridge6-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>맑은내다리<img src="image/icon_sub_menu1_2b.png"></h4>
+                                    <h3>청계천을 순 우리말로 바꾼 다리</h3>
+                                    <p>
+                                        동대문구 창신동 430번지와 청계천7가 신당동 213번지 사이 청계천이 있는 다리이다. 청계천을 순 우리말로 바꾼 이름이다. 나비의 힘찬 비상을 아치구조와 크로스 케이블로 조화시켜 힘찬 도약을 연출함으로써 패션 중심의 상징성을 부여하였다. 폭 13.5m, 길이 26.3m로 청계천이 복원되면서 2005년 9월 30일 GS건설과 현대산업에 의해 준공되었다.
+                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </article>
+                <article id="food_art">
+                    <div id="iconex">
+                        <div><img src="image/icon_sub_menu2_1.png"><br> 한식</div>
+                        <div><img src="image/icon_sub_menu2_2.png"><br> 중식</div>
+                        <div><img src="image/icon_sub_menu2_3.png"><br> 양식</div>
+                        <div><img src="image/icon_sub_menu2_4.png"><br> 일식</div>
+                        <div><img src="image/icon_sub_menu2_5.png"><br> 후식</div>
+                        
+                    </div>
+                    <h2>먹거리</h2>
+                    <h3>마전교(광장시장)부터 DDP(동대문디자인플라자)까지 청계천을 따라 청계확력길을 걷다보면 볼 수 있는 다양한 먹거리를 소개해드립니다!<br> 우리함께 활기차게 청계활력길을 걸어볼까요?</h3>
+                    <div class="tabmenu">
+                        <label>
+                            <input type="radio" name="food" checked>
+                            <a class="food">은주정 <img src="image/icon_sub_menu2_1.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="food2" checked>
+                                        <img src="image/food2-1.jpg">
+                                        <div>
+                                            <img src="image/food2-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food2">
+                                        <img src="image/food2-2.jpg">
+                                        <div>
+                                            <img src="image/food2-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food2">
+                                        <img src="image/food2-3.jpg">
+                                        <div>
+                                            <img src="image/food2-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>은주정<img src="image/icon_sub_menu2_1b.png"></h4>
+                                    <p>
+                                        서울 3대 김치찌개라고 평가되는 맛집입니다.<br> 수요미식회에도 소개됬을 정도로 평이 매우 좋습니다.<br>
+                                        청계천 방산시장에 위치해있고 , 맛 있는 한끼를 채울 쌈싸먹는 김치찌개와 된장찌개..그리고 고소한 삼겹살이 준비 되어있습니다.
+                                    </p>
+                                    <div>
+                                        <div>
+                                            <p>위치 : 서울 중구 창경궁로8길 32</p>
+                                            <p>문의 : 02-2265-4669</p>
+                                            <p>운영시간 : 매일 10:30 - 22:00</p>
+                                        </div>
+                                        <div>
+                                            <p>주요메뉴</p>
+                                            <p>점심 쌈싸먹는 김치찌개 : 8,000원</p>
+                                            <p>저녁 삼겹살+김치찌개 : 12,000원</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="food">
+                            <a class="food">박가네빈대떡 <img src="image/icon_sub_menu2_1.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="food3" checked>
+                                        <img src="image/food3-1.jpg">
+                                        <div>
+                                            <img src="image/food3-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food3">
+                                        <img src="image/food3-2.jpg">
+                                        <div>
+                                            <img src="image/food3-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food3">
+                                        <img src="image/food3-3.jpg">
+                                        <div>
+                                            <img src="image/food3-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>박가네빈대떡<img src="image/icon_sub_menu2_1b.png"></h4>
+                                    <p>
+                                        불린 녹두를 맷돌에 직접 갈아서 사용하여 더욱 더 고소한 맛을 내는 빈대떡 전문점입니다. 주문 즉시 부쳐내는 녹두 빈대떡은 기름을 넉넉하게 둘러 부쳐내어 바삭한 맛을 내는데요. 즉석에서 부쳐내는 대형 프라이팬 앞에는 시식용 빈대떡도 즐길 수 있으며 밥알 동동 뜨는 옛날식 동동주와 막걸리도 준비되어 있습니다.
+                                    </p>
+                                    <div>
+                                        <div>
+                                            <p>위치 : 서울 종로구 종로32길 7</p>
+                                            <p>문의 : 02-2264-0847</p>
+                                            <p>운영시간 : 매일 08:00 - 22:00</p>
+                                        </div>
+                                        <div>
+                                            <p>주요메뉴</p>
+                                            <p>빈대떡 : 5,000원</p>
+                                            <p>고기빈대떡 : 8,000원</p>
+                                            <p>해물빈대떡 : 8,000원</p>
+                                            <p>박가네 삼함 : 15,000원</p>
+                                            <p>막걸리 : 3,000원</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="food">
+                            <a class="food">진할매원조닭한마리 <img src="image/icon_sub_menu2_1.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="food4" checked>
+                                        <img src="image/food4-1.jpg">
+                                        <div>
+                                            <img src="image/food4-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food4">
+                                        <img src="image/food4-2.jpg">
+                                        <div>
+                                            <img src="image/food4-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food4">
+                                        <img src="image/food4-3.jpg">
+                                        <div>
+                                            <img src="image/food4-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>진할매원조닭한마리<img src="image/icon_sub_menu2_1b.png"></h4>
+                                    <p>
+                                        종로 5가와 6가 사이 동대문 종합시장 먹자골목에 위치한 본점은 1978년에 문을 열어 동대문 닭한마리 골목의 원조인 집입니다. 진한 국물이 일품인 동대문의 맛집입니다.
+                                    </p>
+                                    <div>
+                                        <div>
+                                            <p>서울 종로구 종로40가길 18</p>
+                                            <p>문의 : 02-2275-9666</p>
+                                            <p>운영시간 : 매일 10:30 - 01:00</p>
+                                        </div>
+                                        <div>
+                                            <p>주요메뉴</p>
+                                            <p>닭한마리 : 25,000원</p>
+                                            <p>국수사리 : 2,000원</p>
+                                            <p>떡사리 : 1,000원</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="food">
+                            <a class="food">쉐이크쉑버거 <img src="image/icon_sub_menu2_3.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="food5" checked>
+                                        <img src="image/food5-1.jpg">
+                                        <div>
+                                            <img src="image/food5-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food5">
+                                        <img src="image/food5-2.jpg">
+                                        <div>
+                                            <img src="image/food5-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="food5">
+                                        <img src="image/food5-3.jpg">
+                                        <div>
+                                            <img src="image/food5-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>쉐이크쉑버거<img src="image/icon_sub_menu2_3b.png"></h4>
+                                    <p>
+                                        쉐이크쉑은 프리미엄 식재료를 사용한 클래식 아메리칸 스타일의 메뉴를 제공하는 파인 캐주얼 레스토랑입니다.<br>
+                                        프리미엄 수제 버거, 플랫탑 도그, 크링클 컷 프라이, 신선한 커스터드, 에일 맥주, 와인 등을 함께 즐길 수 있을 뿐만 아니라 쉑에 방문한 모든 분들을 내 집에 머물러 온 게스트로서 응대하며 따뜻한 호스피탈리티를 제공합니다. 
+                                    </p>
+                                    <div>
+                                        <div>
+                                            <p>위치 : 을지로6가 18-12 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;두산타워빌딩 1층</p>
+                                            <p>문의 : 02-3398-4003</p>
+                                            <p>운영시간 : 매일 10:30 - 22:00</p>
+                                        </div>
+                                        <div>
+                                            <p>주요메뉴</p>
+                                            <p>Shack Stack : 12,900원</p>
+                                            <p>ShackBurger : 6,900원</p>
+                                            <p>Shakes : 5,900원</p>
+                                            <p>Shroom Burger : 9,400원</p>
+                                            <p>SmokeShack : 8,900원</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </article>
+                <article id="travel_art">
+                    <div id="iconex">
+                        <div><img src="image/icon_sub_menu3_1.png"><br> 기념물</div>
+                        <div><img src="image/icon_sub_menu3_2.png"><br> 명소</div>
+                        <div><img src="image/icon_sub_menu3_3.png"><br> 문화재</div>
+                        <div><img src="image/icon_sub_menu3_4.png"><br> 기념관</div>
+                        <div><img src="image/icon_sub_menu3_5.png"><br> 공원</div>
+                    </div>
+                    <h2>주변관광지</h2>
+                    <h3>마전교(광장시장)부터 DDP(동대문디자인플라자)까지 청계천을 따라 청계확력길 주위에서 볼 수 있는 다양한 관광지를 소개해드립니다!<br> 우리함께 활기차게 청계활력길을 걸어볼까요?</h3>
+                    <div class="tabmenu">
+                        <label>
+                            <input type="radio" name="travel" checked>
+                            <a class="travel">광장시장 <img src="image/icon_sub_menu3_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="travel1" checked>
+                                        <img src="image/travel1-1.jpg">
+                                        <div>
+                                            <img src="image/travel1-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel1">
+                                        <img src="image/travel1-2.jpg">
+                                        <div>
+                                            <img src="image/travel1-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel1">
+                                        <img src="image/travel1-3.jpg">
+                                        <div>
+                                            <img src="image/travel1-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>광장시장<img src="image/icon_sub_menu3_2b.png"></h4>
+                                    <p>
+                                        종로 광장시장은 조선시대 배오개시장의 명맥을 잇고, 1905년 광장주식회사의 설립과 함께 시장 개설 허가를 받아 오랜 전통을 가진 전통시장이다.<br> 다양한 먹을거리를 파는 음식점들이 많고, 포목과 구제 상품 등이 활발하게 거래되고 있다.<br>
+                                        또한 한복상가로도 유명하다. 원단이나 자수 등의 재료를 살 경우, 한복 쪽을 잘 모르는 것 같거나 어려보이면 바가지를 씌우는 경우가 간혹 있으니 주의해야 한다. 
+                                    </p>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </label>
+                        
+                        <label>
+                            <input type="radio" name="travel">
+                            <a class="travel">평화시장 <img src="image/icon_sub_menu3_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="travel3" checked>
+                                        <img src="image/travel3-1.jpg">
+                                        <div>
+                                            <img src="image/travel3-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel3">
+                                        <img src="image/travel3-2.jpg">
+                                        <div>
+                                            <img src="image/travel3-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel3">
+                                        <img src="image/travel3-3.jpg">
+                                        <div>
+                                            <img src="image/travel3-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>평화시장<img src="image/icon_sub_menu3_2b.png"></h4>
+                                    <p>
+                                        서울 평화시장은 한국전쟁 이후 청계천 주변에서 미군 군복과 담요 등으로 옷을 만들어 팔기 시작하면서 성장한 전통시장이다.<br> 한국의 의류 산업을 선도해 온 평화시장은 오늘날 동대문패션타운에 속해 있으며 숙녀복과 단체복 등의 의류를 판매하고 있다.<br>
+                                        평화시장 주변에는 거대 쇼핑몰인 두산타워, 밀리오레, 동대문 케레스타(옛 프레야타운) 등이 가까운 곳에 위치하고 있어서 함께 이용하기 좋다.<br>
+                                        평화시장은 3층으로 구성되어 있는데 1층에는 단체복, 작업복, 모자, 수영복 등 다양한 의류를 팔고 있으며 2~3층은 숙녀복 매장이 많다.
+                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="travel">
+                            <a class="travel">흥인지문 <img src="image/icon_sub_menu3_3.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="travel4" checked>
+                                        <img src="image/travel4-1.jpg">
+                                        <div>
+                                            <img src="image/travel4-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel4">
+                                        <img src="image/travel4-2.jpg">
+                                        <div>
+                                            <img src="image/travel4-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel4">
+                                        <img src="image/travel4-3.jpg">
+                                        <div>
+                                            <img src="image/travel4-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>흥인지문<img src="image/icon_sub_menu3_3b.png"></h4>
+                                    <p>
+                                        서울 도성에 딸린 8문 중의 하나로서 서울 도성 정동(正東)쪽에 있으며 원래의 이름은 흥인지문(興仁之門)이다. 하지만 일반적으로 동대문이라고 부른다. 1396년(태조 5)에 건립되고 1453년(단종 1)에 중수되었으며, 1869년(고종 6)에 이르러 이를 전적으로 개축하여 현재의 모습을 갖추었다. 화강암의 무사석(武砂石)으로 홍예문(虹霓門)을 축조하고 그 위에 중층의 문루를 세웠으며 문 밖으로는 반달 모양의 옹성(壅城)을 둘리고 있으나 이것도 1869년(고종 6)에 다시 개축한 것이다. 문루의 아래층은 주위 4면을 모두 개방하였으나 위층은 기둥 사이를 모두 창문과 같이 네모나게 구획하여 각각 한 짝 열개의 판문(板門)을 달았다. 중층(重層)의 우진각 지붕이며 정면 5칸, 측면 2칸으로 구성되어 있다. 
+                                </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="travel">
+                            <a class="travel">두타몰 <img src="image/icon_sub_menu3_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="travel5" checked>
+                                        <img src="image/travel5-1.JPG">
+                                        <div>
+                                            <img src="image/travel5-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel5">
+                                        <img src="image/travel5-2.jpg">
+                                        <div>
+                                            <img src="image/travel5-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel5">
+                                        <img src="image/travel5-3.jpg">
+                                        <div>
+                                            <img src="image/travel5-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>두타몰<img src="image/icon_sub_menu3_2b.png"></h4>
+                                    <p>
+                                        유니크하고 트렌디한 패션과 F&B를 원스톱으로 즐길 수 있는 동대문 랜드마크 쇼핑몰입니다.<br>
+                                        대한민국 최고의 패션 디자이너들인 계한희, 고태용, 임선옥, 윤춘호 등 탑 디자이너부터 최혜정, 김지만등이 모두 모인 두타몰에서 최신트랜드를 알아보며 쇼핑해보세요.
+                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="travel">
+                            <a class="travel">DDP <img src="image/icon_sub_menu3_2.png"></a>
+                            <div>
+                                <div class="tabmenuside1">
+                                    <label>
+                                        <input type="radio" name="travel6" checked>
+                                        <img src="image/travel6-1.jpg">
+                                        <div>
+                                            <img src="image/travel6-1.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel6">
+                                        <img src="image/travel6-2.jpg">
+                                        <div>
+                                            <img src="image/travel6-2.jpg">
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="travel6">
+                                        <img src="image/travel6-3.jpg">
+                                        <div>
+                                            <img src="image/travel6-3.jpg">
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                                <div class="tabmenuside2">
+                                    <h4>DDP<img src="image/icon_sub_menu3_2b.png"></h4>
+                                    <p>
+                                        서울특별시 중구의 전시장 및 쇼핑몰. 영국의 건축가 자하 하디드가 설계했다. 홈페이지에 따르면 세계 최대 규모의 3차원 비정형 건축물이라고 한다.<br> 2007년 동대문운동장이 철거된 이후 동대문운동장에 대한 개발정책의 일원으로 세워지게 되었으며 2008년에 착공하여 6년만인 2014년 3월에 개장하였다.<br> 현재 운영기관은 서울시 출연기관인 서울디자인재단이며 2009년에 먼저 개장한 동대문역사문화공원과 더불어 총 관리를 하고 있다.<br>
+                                        여러 행사를 계최하며 인지도면에서도 성공했다. 시민들이나 관광객, 특히 외국인 관광객들이 많이 찾는 랜드마크 중 하나가 되었다.<br> 주변 동대문 상권에 대해서도 일시적인 흥행이 아니라 지속적으로 매출을 올리는데에 크나큰 역할을 하였다.<br> DDP는 이로써 혁신적인 사업에 있어서 기성 관료주의를 타파하고 지역혁신에 성공한 대표적인 사례로 남게 되었다.
+
+                                    </p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </article>
+                <article id="rest_art">
+                    <div id="iconex">
+                        <div><img src="image/icon_sub_menu4_1.png"><br> 승강기</div>
+                        <div><img src="image/icon_sub_menu4_2.png"><br> 계단</div>
+                        <div><img src="image/icon_sub_menu4_3.png"><br> 화장실</div>
+                        <div><img src="image/icon_sub_menu4_4.png"><br> 진출입로</div>
+                    </div>
+                    <h2>편의시설</h2>
+                    <img src="image/facility.jpg">
+                </article>
+                <article id="howcome_art">
+                    <div id="iconex">
+                        <div><img src="image/icon_sub_menu5_1.png"><br> 위치</div>
+                        <div><img src="image/icon_sub_menu5_2.png"><br> 버스</div>
+                    </div>
+                    <h2>오시는길</h2>
+                    <div class="tabmenu">
+                        <label>
+                            <input type="radio" name="transport" checked>
+                            <a class="transport">을지로 4가역 <img src="image/icon_sub_menu5_2.png"></a>
+                            <div class="come">
+                                <p>을지로 4가역 <img src="image/icon_sub_menu5_2_black.png" width="30px"></p>
+                                <img src="image/transport2.jpg">
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="transport">
+                            <a class="transport">종로 5가역 <img src="image/icon_sub_menu5_2.png"></a>
+                            <div class="come">
+                                <p>종로 5가역 <img src="image/icon_sub_menu5_2_black.png" width="30px"></p>
+                                <img src="image/transport1.jpg">
+                            </div>
+                        </label><label>
+                            <input type="radio" name="transport">
+                            <a class="transport">동대문역 <img src="image/icon_sub_menu5_2.png"></a>
+                            <div class="come">
+                                <p>동대문역 <img src="image/icon_sub_menu5_2_black.png" width="30px"></p>
+                                <img src="image/transport3.jpg">
+                            </div>
+                        </label><label>
+                            <input type="radio" name="transport">
+                            <a class="transport">동대문 문화역사공원역 <img src="image/icon_sub_menu5_2.png"></a>
+                            <div class="come">
+                                <p>동대문 문화역사공원역 <img src="image/icon_sub_menu5_2_black.png" width="30px"></p>
+                                <img src="image/transport4.jpg">
+                            </div>
+                        </label>
+                    </div>
+                </article>
+            </section>
+            <footer>
+                <div>
+                  <img src="image/main_title.png" alt="main_title" width="100px" height="50px">
+                  <p>프로젝트 : 서울 명소 소개 사이트 제작하기<br>
+                     프로젝트 팀명 : 비콘찍고가 제작 팀 ｜ 프로젝트 팀원 : 송민석 / 장지영 / 최도권 / 김경미<br>
+                     프로젝트 제작 기간 : 2020.04.01 ~ 2020.05.07<br><br>
+                     Copyright © 2020. 비콘찍고가. All rights reserve.</p>
+                  <p></p>
+                  <p></p>  
+                </div>
+            </footer>
+        </div>
+    
+  </body>
+</html>
